@@ -17,14 +17,14 @@ export default function Login(){
             Email
             <i className="fa-solid fa-user" />
           </label>
-          <input type="email" id="email" required="" />
+          <input type="email" id="email" required />
         </div>
         <div className={styles["input-group"]}>
           <label htmlFor="password">
             Password
             <i className="fa-solid fa-key" />
           </label>
-          <input type="password" id="password" required="" />
+          <input type="password" id="password" required />
         </div>
         <button className={styles['login-submit']}>Sign in</button>
         <div className={styles["register-link"]}>
