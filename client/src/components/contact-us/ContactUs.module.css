@@ -1,0 +1,133 @@
+div.contact-us-container{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0, 2rem;
+}
+
+div.contact-wrapper{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    border-radius:2em;
+    border:1px solid black;
+    padding:2em;
+    margin:1em;
+
+}
+
+div.contact-details-wrapper{
+    display: flex;
+    flex-direction: column;
+    flex-grow:1;
+    flex-shrink:1;
+    padding:2em;
+    padding-top:0;
+    padding-bottom:0;
+    gap:1em;
+}
+
+div.contact-details-wrapper h2{
+    font-size:2em;
+    font-weight:bold;
+}
+
+div.contact-details-wrapper p.subheading-contact-us{
+    
+    font-size:1.5em;
+}
+
+div.contact-details-wrapper span{
+    display:flex;
+    flex-direction:row;
+    align-self:start;
+    gap:0.5em;
+    border: 1.5px solid black;
+    border-radius:2em;
+    padding:1em;
+    
+}
+
+div.contact-details-wrapper span i{
+    align-self:center;
+}
+
+div.contact-us-form-wrapper{
+    display:flex;
+    flex-direction: row;
+    flex-grow:1;
+    align-items: center;
+    justify-content: center;
+    padding-right:32px;
+  
+}
+
+form.contact-us-form{
+    display:flex;
+    flex:1 1 300px;
+    min-width:200px;
+    max-width:600px;
+    height:auto;
+    margin-top:1em;
+    flex-direction: column;
+    padding:2em;
+    background:#c9ae87;
+    border-radius:2em;
+
+}
+
+div.user-name,.user-second-name,.user-phone,.user-email,.user-message{
+    display:flex;
+    flex-direction:column;
+   
+}
+
+div.user-phone input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+form.contact-us-form input,textarea{
+    
+    width: 100%;
+    font-size: 16px; 
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+    padding: 0.5em;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    border:none;
+}
+
+form.contact-us-form input:focus,textarea:focus{
+    outline: none;
+    border: 1px solid brown;
+}
+
+form.contact-us-form label{
+    display: block;
+    max-width: 100%;
+    align-self: start;
+    font-size: 1.2em;
+    color: brown
+}
+
+form.contact-us-form label:hover{
+    cursor:pointer;
+}
+
+button.contact-us-sbm-btn{
+    width: 100%;
+    padding: 0.5em 3em ;
+    border-radius: 2em;
+    margin-bottom: 1em;
+    background: blue;
+    transition: background, color 0.3s ease;
+    cursor: pointer;
+}
+button.contact-us-sbm-btn:hover{
+    background: brown;
+    color: white;
+   
+}
