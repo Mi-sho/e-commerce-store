@@ -1,0 +1,84 @@
+div.about-us-container{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+div.about-us-container section{
+    display:flex;
+    gap:1.5em;
+    align-items: center;
+    margin: 2em 0;
+    
+}
+
+ section.restorer-container{
+    flex-direction:row-reverse;
+}
+
+div.about-img-wrapper,div.restorer-img-wrapper,div.sell-your-art-img-wrapper{
+  flex: 1;
+  min-width: 45%;
+
+}
+
+img.who-are-we-img, img.restorer-img, img.sell-your-art-img{
+    width: 100%;
+    height: auto;
+    border-radius:2em;
+    
+}
+
+h2.who-are-we-title, h2.restorer-title, h2.sell-your-art-title{
+    /* font-family: "Dancing Script", cursive; */
+    font-size:1.5em;
+    font-weight:bold;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+div.about-description,div.restorer-description,div.sell-your-art-description{
+    flex: 1;
+
+}
+
+.description-about-section p{
+    line-height: 1.6;
+    margin-bottom: 0.7em;
+    color: #34495e;
+}
+
+.description-about-section a{
+    font-weight:bold;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.description-about-section a:hover{
+    color:orange;
+}
+
+ul.list-about-section{
+    padding-left: 0.8em;
+    margin: 0.6em 0;
+}
+
+ul.list-about-section li{
+    margin-bottom: 0.3em;
+}
+
+
+@media (max-width: 768px) {
+    div.about-us-container section {
+      flex-direction: column;
+    }
+    
+    div.about-img-wrapper,div.restorer-img-wrapper,div.sell-your-art-img-wrapper {
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    h2.who-are-we-title, h2.restorer-title, h2.sell-your-art-title{
+      font-size: 1em;
+    }
+  }
