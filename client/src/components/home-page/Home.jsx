@@ -1,5 +1,6 @@
-import HeroSection from './hero-section/HeroSection'
 import styles from './Home.module.css'
+
+import HeroSection from './hero-section/HeroSection'
 import LatestArticlePosts from './latest-article-posts/LatestArticlePosts'
 import LatestItems from './latest-items/LatestItems'
 
