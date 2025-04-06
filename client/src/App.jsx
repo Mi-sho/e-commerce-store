@@ -7,6 +7,7 @@ import Home from './components/home-page/Home'
 import Login from './components/login-page/Login'
 import Register from './components/register-page/Register'
 import About from './components/about-us-page/About'
+import Footer from './components/footer/Footer'
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
      <Route path='/register' element={<Register/>} />
      <Route path='/about-us' element={<About />} />
      </Routes>
-     
+
+    <Footer /> 
     </>
+
   )
 }
 
