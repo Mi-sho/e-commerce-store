@@ -1,0 +1,101 @@
+div.create-edit-container{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0, 2rem;
+    min-height:100vh;
+    margin-bottom:2em;
+}
+
+div.create-heading{
+    display:flex;
+    justify-self: center;
+    font-size:2em;
+    font-weight:600;
+    padding:1em;
+   
+}
+div.create-edit-form-wrapper{
+    display:flex;
+    flex-direction: row;
+    flex-grow:1;
+    align-items: center;
+    justify-content: center;
+  
+ 
+}
+
+form.create-edit-form{
+    display:flex;
+    flex:1 1 300px;
+    min-width:300px;
+    max-width:600px;
+    height:auto;
+    margin-top:1em;
+    flex-direction: column;
+    padding:2em;
+   
+    background:#c9ae87;
+    border-radius:2em;
+
+}
+
+div.item-tittle,.item-summary,.item-price,.item-maker,.item-description,.item-condition,.item-category,.item-shipping-price,.item-image{
+    display:flex;
+    flex-direction:column;
+   
+}
+
+div.item-price,.item-shipping-price input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+form.create-edit-form input,
+form.create-edit-form textarea,
+form.create-edit-form select{
+    
+    width: 100%;
+    font-size: 16px; 
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+    padding: 0.5em;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    border:none;
+}
+
+form.create-edit-form input:focus,
+form.create-edit-form textarea:focus,
+form.create-edit-form select:focus{
+    outline: none;
+    border: 1px solid brown;
+}
+
+form.create-edit-form label{
+    display: block;
+    max-width: 100%;
+    align-self: start;
+    font-size: 1.2em;
+    color: brown
+}
+
+form.create-edit-form label:hover{
+    cursor:pointer;
+}
+
+button.create-edit-sbm-btn{
+    width: 100%;
+    padding: 0.5em 3em ;
+    border-radius: 2em;
+    margin-bottom: 1em;
+    background: blue;
+    transition: background, color 0.3s ease;
+    cursor: pointer;
+}
+button.create-edit-sbm-btn:hover{
+    background: brown;
+    color: white;
+   
+}
