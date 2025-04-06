@@ -11,6 +11,7 @@ import Footer from './components/footer/Footer'
 import ContactUs from './components/contact-us/ContactUs'
 import Blog from './components/blog/Blog'
 import Catalog from './components/items-catalog/Catalog'
+import Cart from './components/profile-cart/Cart'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
      <Route path='contact-us' element={<ContactUs />} />
      <Route path='/blog' element={<Blog />} />
      <Route path='/catalog' element={<Catalog />} />
+     <Route path='myprofile/cart' element={<Cart />}/>
      </Routes>
 
     <Footer /> 
