@@ -14,7 +14,7 @@ export default function UserProvider({
 
 
     const userLogoutHandler = () => {
-        setAuthData({});
+        setAuthData(null);
     };
 
     return(

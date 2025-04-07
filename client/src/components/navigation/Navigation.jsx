@@ -10,7 +10,7 @@ export default function Navigation() {
   const {accessToken , role} = useUserContext();
   const isAuthenticated = !!accessToken;
   const isAdmin = !!role;
-  console.log(isAuthenticated);
+
   
 
 
