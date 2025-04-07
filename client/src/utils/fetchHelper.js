@@ -4,7 +4,7 @@ const request = async (method, url, data, options = {} ) => {
 
 
     const headers = {
-        "Content-type": "apprilcation/json",
+        "Content-type": "application/json",
         ...passedHeaders
     };
 
@@ -17,7 +17,8 @@ const request = async (method, url, data, options = {} ) => {
     if(method !== "GET" && data) {
         requestConfig.body = JSON.stringify(data);
     };
-
+ 
+ 
 
     try{
         const response = await fetch(url, requestConfig);
@@ -26,8 +27,13 @@ const request = async (method, url, data, options = {} ) => {
             const error = new Error(`Request failed: ${response.status}`);
             error.status = response.status;
             throw error;
+
+           
         }
-        return response.json();
+        
+        const result = await response.json();
+        return result;
+        
 
     } catch(err) {
         if(!err.status) {
