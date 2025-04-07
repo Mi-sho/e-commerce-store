@@ -1,6 +1,12 @@
 import { Link } from "react-router";
+import { initDropdowns } from "flowbite";
+import { useEffect } from "react";
 
 export default function AdminNav() {
+
+  useEffect(() =>{
+    initDropdowns()
+  } ,[])
     return(
         <>
       <button
