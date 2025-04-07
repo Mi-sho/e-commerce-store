@@ -16,6 +16,7 @@ import Checkout from './components/profile-checkout/Checkout'
 import CreateEditItem from './components/admin/create-edit-item/CreateEditItem'
 import WriteEditArticle from './components/admin/write-edit-article/WriteEditArticle'
 import ItemDetails from './components/item-details/ItemDetails'
+import ArticleDetails from './components/article-details/ArticleDetails'
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
      <Route path='/blog' element={<Blog />} />
      <Route path='/catalog' element={<Catalog />} />
      <Route path='/catalog/:itemId/details' element={<ItemDetails />} />
+     <Route path='/blog/:itemId/details' element={<ArticleDetails />} />
+
      
      <Route path='myprofile/cart' element={<Cart />}/>
      <Route path='myprofile/checkout' element={<Checkout />}/>

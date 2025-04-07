@@ -25,7 +25,12 @@ export default function WriteEditArticle({tittle}) {
             
                                     <div className={styles["article-image"]}>
                                     <label htmlFor="article-image">Image</label>
-                                    <input type="text" id="article-image" name="article-image" />
+                                    <input type="text" id="article-image" name="article-image"  required/>
+                                    </div>
+
+                                    <div className={styles["article-image-caption"]}>
+                                    <label htmlFor="article-image-caption">Image caption</label>
+                                    <input type="text" id="article-image-caption" name="article-image-caption"/>
                                     </div>
             
             

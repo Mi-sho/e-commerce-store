@@ -28,7 +28,7 @@ export default function Blog() {
                                 <h2 className={styles["blog-article-title"]}>Da IMa neshtoaaaaaaaaaaaaaaaaaaaaaaas1er2112r124214124aaaaaaaaaaaaa</h2>
                                  <p className={styles["blog-article-date"]}>12.12.1222</p>
                                  <p className={styles["blog-article-description"]}> EDIN DEN E VUZMOJNO DA NAPRAVQ NQKVI NESHTA KOI ZNAEIIEwwwsss</p>
-                                 <a href="/blogs/blogId/details" className={styles["read-article-more"]}>Read full article</a>
+                                 <a href="/blog/1/details" className={styles["read-article-more"]}>Read full article</a>
                             </div>
                         </div>
                         <div className={styles["blog-article-card"]}>
