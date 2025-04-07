@@ -1,11 +1,42 @@
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import { useActionState } from 'react';
+
 import styles from './Login.module.css'
+import { useLogin } from '../../api/authApi';
+
 
 export default function Login(){
+  const navigate = useNavigate();
+  const { login } = useLogin();
+
+
+  const loginHandler = async (prevState, formData) => {
+    const {email, password} = Object.fromEntries(formData);
+
+
+    try{
+      const userData = await login(email, password);
+
+      localStorage.setItem('auth', JSON.stringify(userData));
+  
+
+      navigate('/');
+    }catch(err){
+      alert(err.message);
+    }
+
+  };
+
+  const [formState, loginAction, isPending] = useActionState(loginHandler, {email: '', password: '' });
+
+
+
+
+
     return(
         <>
         <div className={styles['wrapper']}>
-        <form className={styles["login-wrapper"]}>
+        <form className={styles["login-wrapper"]} action={loginAction}>
     <div className={styles["inside-form-wrapper"]}>
       <div className={styles["image-wrapper"]}>
         <img src="/tempPics/gabriella-clare-marino-O5JtGuNCI6k-unsplash.jpg" alt="" />
@@ -17,16 +48,16 @@ export default function Login(){
             Email
             <i className="fa-solid fa-user" />
           </label>
-          <input type="email" id="email" required />
+          <input type="email" id="email" name="email" required />
         </div>
         <div className={styles["input-group"]}>
           <label htmlFor="password">
             Password
             <i className="fa-solid fa-key" />
           </label>
-          <input type="password" id="password" required />
+          <input type="password" id="password" name="password" required />
         </div>
-        <button className={styles['login-submit']}>Sign in</button>
+        <button className={styles['login-submit']} disabled={isPending}>Sign in</button>
         <div className={styles["register-link"]}>
           Don't have an account? <Link to="/register">Register here</Link>
         </div>

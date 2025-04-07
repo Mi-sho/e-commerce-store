@@ -12,4 +12,15 @@ export const useRegister = () => {
     return {
         register
     }
+};
+
+export const useLogin = () =>{
+    const login = (email, password) => {
+        const result = fetchHelper.post(`${baseUrl}/login`, {email,password});
+        return result;
+    };
+
+    return{
+        login,
+    }
 }

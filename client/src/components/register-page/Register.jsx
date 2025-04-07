@@ -18,7 +18,7 @@ export default function Register() {
       alert('Password missmatch');
       return;
     }
-    console.log(email,username,password);
+  
     
 
     try{
@@ -44,7 +44,7 @@ export default function Register() {
     return(
         <>
         <div className={styles["register-wrapper"]}>
-        <form method="POST" className={styles["register-form"]} action={registerAction}>
+        <form className={styles["register-form"]} action={registerAction}>
     <div className={styles["inner-wrapper"]}>
       <h2 className={styles["register-title"]}>Register</h2>
       <div className={styles["inputs-wrapper"]}>
@@ -70,7 +70,7 @@ export default function Register() {
         <input type="password" id="re-password" name="re-password" required/>
       </div>
       <div className={styles["button-wrapper"]}>
-        <button className={styles["register-btn"]}>Register</button>
+        <button className={styles["register-btn"]} disabled={isPending}>Register</button>
       </div>
       <div className={styles["registred-already"]}>
         Already have an account?
