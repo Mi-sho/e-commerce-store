@@ -59,10 +59,6 @@ export default function CreateEditItem({tittle}){
                         <input type="number" id="item-price" name="item-price"/>
                         </div>
 
-                        <div className={styles["item-shipping-price"]}>
-                        <label htmlFor="item-shipping-price">Shipping Price</label>
-                        <input type="number" id="item-shipping-price" name="item-shipping-price"/>
-                        </div>
 
                         <button type='submit' className={styles['create-edit-sbm-btn']}>{tittle} item</button>
                     </form>

@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function HeroSection() {
     return (
         <section className="h-130 bg-center bg-no-repeat bg-[url(/images/imad-alassiry-GeqhIp6D84s-unsplash.jpg)] bg-gray-700 bg-blend-multiply mt-3 rounded-xl">
@@ -10,8 +12,8 @@ export default function HeroSection() {
               capital can unlock long-term value and drive economic growth.
             </p>
             <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-              <a
-                href="#"
+              <Link
+                to="/catalog"
                 className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
               >
                 Get started
@@ -30,13 +32,13 @@ export default function HeroSection() {
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-              </a>
-              <a
-                href="/about us"
+              </Link>
+              <Link
+                to="/about-us"
                 className="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400"
               >
                 Learn more
-              </a>
+              </Link>
             </div>
           </div>
         </section>

@@ -59,7 +59,7 @@ import styles from './Catalog.module.css';
                 <p className={styles['item-price']}>$344</p>
             </div>
             <div className={styles['details-buy-btns']}>
-                <Link to="/products/1/details" className={styles["item-details-tag"]}>Details</Link>
+                <Link to="/catalog/1/details" className={styles["item-details-tag"]}>Details</Link>
                 <button className={styles['fav-item']} ><i className={true ? "fa-solid fa-heart" :"fa-regular fa-heart"}></i></button>
                 <button className={styles["item-buy-btn"]}>Buy</button>
             </div>

@@ -17,7 +17,7 @@ export default function Navigation() {
         <img
           src="/logo/33758770_8086852.jpg"
           className="h-8"
-          alt="Flowbite Logo"
+          alt="Antique World logo"
         />
         <span className=" text-2xl font-semibold whitespace-nowrap dark:text-white">
           Antique World

@@ -15,6 +15,7 @@ import Cart from './components/profile-cart/Cart'
 import Checkout from './components/profile-checkout/Checkout'
 import CreateEditItem from './components/admin/create-edit-item/CreateEditItem'
 import WriteEditArticle from './components/admin/write-edit-article/WriteEditArticle'
+import ItemDetails from './components/item-details/ItemDetails'
 
 function App() {
   return (
@@ -28,13 +29,14 @@ function App() {
      <Route path='contact-us' element={<ContactUs />} />
      <Route path='/blog' element={<Blog />} />
      <Route path='/catalog' element={<Catalog />} />
+     <Route path='/catalog/:itemId/details' element={<ItemDetails />} />
      
      <Route path='myprofile/cart' element={<Cart />}/>
      <Route path='myprofile/checkout' element={<Checkout />}/>
 
      <Route path='/admin/create' element={<CreateEditItem tittle='Create' />}/>
      <Route path='/admin/:itemId/edit' element={<CreateEditItem tittle='Edit' />}/>
-     <Route path='/admin/write-article' element={<WriteEditArticle tittle='Create' />}/>
+     <Route path='/admin/write-article' element={<WriteEditArticle tittle='Write' />}/>
      <Route path='/admin/:itemId/edit-article' element={<WriteEditArticle tittle='Edit' />}/>
 
 

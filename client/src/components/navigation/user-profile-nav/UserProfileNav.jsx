@@ -17,7 +17,7 @@ export default function UserProfile() {
         <>   
         <div className="relative">
 
-        <img id="avatarButton" type="button" className="w-10 h-10 rounded-full cursor-pointer" src="/profile-pic/user (1).png" alt="User dropdown" onClick={ShowUserProfileClickHandler} />
+        <img id="avatarButton" type="button" className="w-10 h-10 rounded-full cursor-pointer" src="/profile-pic/user (1).png" alt="User logo" onClick={ShowUserProfileClickHandler} />
 
         <div id="userDropdown" className={opened ? 
   "absolute top-full left-0 right-0 mt-2 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600" : 

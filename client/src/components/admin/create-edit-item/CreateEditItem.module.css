@@ -39,13 +39,13 @@ form.create-edit-form{
 
 }
 
-div.item-tittle,.item-summary,.item-price,.item-maker,.item-description,.item-condition,.item-category,.item-shipping-price,.item-image{
+div.item-tittle,.item-summary,.item-price,.item-maker,.item-description,.item-condition,.item-category,.item-image{
     display:flex;
     flex-direction:column;
    
 }
 
-div.item-price,.item-shipping-price input::-webkit-outer-spin-button,
+div.item-price input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
