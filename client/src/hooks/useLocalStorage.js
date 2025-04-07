@@ -1,5 +1,4 @@
-
-
+import { useState } from "react";
 export const useLocalStorage = (key, initialState) => {
     const [state, setState] = useState (() => {
         const persistedState = localStorage.getItem(key);
