@@ -19,10 +19,13 @@ import ItemDetails from './components/item-details/ItemDetails'
 import ArticleDetails from './components/article-details/ArticleDetails'
 import ProfileOrderHistory from './components/profile-order-history/ProfileOrderHistory'
 import Favorite from './components/profile-favorites/Favorite'
+import Logout from './components/logout/Logout'
+import UserProvider from './providers/UserProvider'
 
 function App() {
   return (
      <>
+     <UserProvider>
       <Navigation/>
      <Routes>
      <Route path='/' element={<Home />}/>
@@ -40,6 +43,7 @@ function App() {
      <Route path='/myprofile/checkout' element={<Checkout />}/>
      <Route path='/myprofile/orderhistory' element={<ProfileOrderHistory />} />
      <Route path='/myprofile/favorites' element={<Favorite />} />
+     <Route path='/logout' element={<Logout />} />
 
      <Route path='/admin/create' element={<CreateEditItem tittle='Create' />}/>
      <Route path='/admin/:itemId/edit' element={<CreateEditItem tittle='Edit' />}/>
@@ -50,6 +54,7 @@ function App() {
      </Routes>
 
     <Footer /> 
+    </UserProvider>
     </>
 
   )

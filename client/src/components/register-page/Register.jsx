@@ -1,11 +1,14 @@
 import { Link, useNavigate } from 'react-router'
 
 import styles from './Register.module.css'
+
 import { useRegister } from '../../api/authApi';
 import { useActionState } from 'react';
+import { useUserContext } from '../../context/userContext';
 
 export default function Register() {
   const navigate = useNavigate();
+  const { userLoginHandler } = useUserContext();
   const { register } = useRegister();
 
 
@@ -24,9 +27,8 @@ export default function Register() {
     try{
 
       const userData = await register(username, email, password);
-    
       
-      localStorage.setItem('auth',JSON.stringify(userData));
+      userLoginHandler(userData);
       
 
       navigate('/');

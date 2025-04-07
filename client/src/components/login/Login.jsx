@@ -3,10 +3,12 @@ import { useActionState } from 'react';
 
 import styles from './Login.module.css'
 import { useLogin } from '../../api/authApi';
+import { useUserContext } from '../../context/userContext';
 
 
 export default function Login(){
   const navigate = useNavigate();
+  const {  userLoginHandler } = useUserContext();
   const { login } = useLogin();
 
 
@@ -16,8 +18,9 @@ export default function Login(){
 
     try{
       const userData = await login(email, password);
+      userLoginHandler(userData);
 
-      localStorage.setItem('auth', JSON.stringify(userData));
+     
   
 
       navigate('/');
