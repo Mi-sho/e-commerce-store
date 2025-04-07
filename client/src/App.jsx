@@ -17,6 +17,7 @@ import CreateEditItem from './components/admin/create-edit-item/CreateEditItem'
 import WriteEditArticle from './components/admin/write-edit-article/WriteEditArticle'
 import ItemDetails from './components/item-details/ItemDetails'
 import ArticleDetails from './components/article-details/ArticleDetails'
+import ProfileOrderHistory from './components/profile-order-history/ProfileOrderHistory'
 
 function App() {
   return (
@@ -34,8 +35,9 @@ function App() {
      <Route path='/blog/:itemId/details' element={<ArticleDetails />} />
 
      
-     <Route path='myprofile/cart' element={<Cart />}/>
-     <Route path='myprofile/checkout' element={<Checkout />}/>
+     <Route path='/myprofile/cart' element={<Cart />}/>
+     <Route path='/myprofile/checkout' element={<Checkout />}/>
+     <Route path='/myprofile/orderhistory' element={<ProfileOrderHistory />} />
 
      <Route path='/admin/create' element={<CreateEditItem tittle='Create' />}/>
      <Route path='/admin/:itemId/edit' element={<CreateEditItem tittle='Edit' />}/>

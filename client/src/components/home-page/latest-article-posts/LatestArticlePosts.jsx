@@ -16,7 +16,7 @@ export default function LatestArticlePosts() {
                 <h2 className={styles["blog-title"]}>Da IMa neshto</h2>
                 <p className={styles["blog-date"]}>12.12.1222</p>
                 <p className={styles["blog-description"]}>lorem</p>
-                <Link to="" className={styles["read-more"]}>Read full article</Link>
+                <Link to="/blog/1/details" className={styles["read-more"]}>Read full article</Link>
               </div>
             </div>
             <div className={styles["blog-card"]}>

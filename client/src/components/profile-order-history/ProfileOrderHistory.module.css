@@ -1,0 +1,153 @@
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    margin-top:2em;
+    padding:1em;
+    max-width: 1280px;
+    min-height: 100vh;
+    margin: 0 auto;
+   
+    text-align:center;
+   
+}
+h2.cart-heading{
+    font-size:3em;
+    font-weight:500;
+    margin-top:2em;
+    margin-bottom:1em;
+}
+
+.ordered-item-wrapper{
+    display:flex;
+    flex-direction:column;
+    width:90%;
+    border:1px solid black;
+    border-radius:1.5em;
+
+}
+
+
+.order-hr{
+   margin-bottom:1em;
+}
+.item-hr{
+ width:90%;
+ align-self:center;
+}
+
+.ordered-item-head-wrapper{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    padding:1em 3em;
+    margin-bottom:0.5em;
+}
+
+.order-placed-date,
+.order-total-price-num,
+.order-locaton,
+.order-id{
+    font-weight:550;
+}
+
+.ordered-item-body-wrapper{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    padding:1em 2em;
+    gap:2em;
+    
+}
+
+.ordered-item-img img{
+    flex-grow:1;
+    max-width:250px;
+    max-height:auto;
+    border-radius:1em;
+}
+.ordered-item-tittle{
+    display:flex;
+    flex-grow:2;
+    align-self:center;
+    justify-content:start;
+    font-size:1.5em;
+    font-weight:450;
+
+}
+
+@media (max-width: 1024px) {
+    .ordered-item-head-wrapper {
+        padding: 1em 2em;
+    }
+    
+    .ordered-item-body-wrapper {
+        padding: 1em;
+    }
+}
+
+@media (max-width: 768px) {
+    h2.cart-heading {
+        font-size: 2.5em;
+        margin-top: 1.5em;
+    }
+    
+    .ordered-item-head-wrapper {
+        flex-direction: column;
+        gap: 0.5em;
+        padding: 1em;
+    }
+    
+    .ordered-item-body-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+    }
+    
+    .ordered-item-tittle {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h2.cart-heading {
+        font-size: 2em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
+    
+    .cart-container {
+        padding: 0.5em;
+    }
+    
+    .ordered-item-wrapper {
+        width: 95%;
+    }
+    
+    .ordered-item-img img {
+        max-width: 200px;
+    }
+    
+    .ordered-item-tittle {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 360px) {
+    h2.cart-heading {
+        font-size: 1.8em;
+    }
+    
+    .ordered-item-img img {
+        max-width: 150px;
+    }
+    
+    .order-placed-date,
+    .order-total-price-num,
+    .order-locaton,
+    .order-id {
+        font-size: 0.9em;
+    }
+}

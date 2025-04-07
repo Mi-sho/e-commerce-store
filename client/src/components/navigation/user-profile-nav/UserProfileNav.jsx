@@ -31,7 +31,7 @@ export default function UserProfile() {
         <Link to="/myprofile/cart" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cart</Link>
       </li>
       <li>
-        <Link to="/profile/my-order-history" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Orders history</Link>
+        <Link to="/myprofile/orderhistory" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Orders history</Link>
       </li>
       <li>
         <Link to="/article/details" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Wishlist</Link>
