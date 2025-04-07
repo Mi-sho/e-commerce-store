@@ -1,10 +1,20 @@
 import { Link } from "react-router";
 import AdminNav from "./admin-nav/AdminNav";
 import UserProfile from "./user-profile-nav/UserProfileNav";
+import { useUserContext } from "../../context/userContext";
 
 
 
 export default function Navigation() {
+
+  const {accessToken , role} = useUserContext();
+  const isAuthenticated = !!accessToken;
+  const isAdmin = !!role;
+  console.log(isAuthenticated);
+  
+
+
+
     return(
         <>
        
@@ -24,14 +34,14 @@ export default function Navigation() {
         </span>
       </Link>
       <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        {true ? <Link
+        {isAuthenticated ? <UserProfile /> 
+        : <Link
         to='/login'
           type="button"
           className="block font-medium  py-2 px-3  text-gray-900 rounded-sm hover:scale-110 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
         >
           Sign in 
-        </Link>
-        : <UserProfile />}
+        </Link>}
         
         <button
           data-collapse-toggle="navbar-sticky"
@@ -114,7 +124,7 @@ export default function Navigation() {
               Contact us
             </Link>
           </li>
-          {false ? '' : <AdminNav />  }
+          {isAdmin ?  <AdminNav /> : ''  }
 
         </ul>
       </div>
