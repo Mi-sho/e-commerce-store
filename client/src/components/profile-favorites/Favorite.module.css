@@ -1,0 +1,233 @@
+div.favorite-wrapper{
+    max-width: 1280px;
+    min-height:100vh;
+    margin: 0 auto;
+    padding:1em 0;
+    display: flex;
+    flex-direction:column;
+    text-align:center;
+
+}
+h2.favorite-heading{
+    font-size:3em;
+    font-weight:500;
+    margin-top:2em;
+    margin-bottom:1em;
+}
+
+div.favorite-container{
+   
+    display: flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:1em;
+    padding:1em;
+
+}
+
+div.favorite-card-item{
+    display: flex;
+    flex-direction:column;
+    width:300px;
+    border: 1px solid black;
+    padding:1em;
+    border-radius: 2em;
+    /* background:white; */
+    
+
+}
+div.favorite-card-item:hover{
+    transform: scale(1.05)
+}
+
+div.favorite-item-image-wrapper{
+    flex:1;
+    width:100%;
+}
+
+div.favorite-item-image-wrapper .favorite-item-image{
+    width:100%;
+    height: 200px;
+    object-fit: contain;
+    
+    
+}
+
+div.favorite-title-description-wrapper{
+    display:flex;
+    flex-direction:column;
+    align-items:start;
+    gap:1em;
+    margin-top:1em;
+    margin-bottom:1em;
+    white-space: nowrap; 
+    overflow:hidden; 
+    overflow:ellipsis; 
+
+
+}
+
+div.favorite-title-description-wrapper h3.favorite-item-title{
+    width: 100%;
+    font-size:1.2em;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+
+div.favorite-title-description-wrapper p.favorite-item-description{
+    font-size:1em;
+    width:100%;
+    color: #34495e;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.favorite-title-description-wrapper p.favorite-item-price{
+    font-size:1.1em;
+    font-weight:bold;
+    color:rgb(29, 42, 54)
+}
+
+
+div.favorite-details-buy-btns{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 1em 0 1em;
+}
+
+div.favorite-details-buy-btns a{
+    border:0.5px solid black;
+    padding:0.2em 0.5em;
+    border-radius:1em;
+    transition: transform 0.3s ease;
+}
+
+div.favorite-details-buy-btns a:hover{
+    transform: scale(1.1)
+}
+
+div.favorite-details-buy-btns button.favorite-item-buy-btn{
+    border:0.5px solid black;
+    padding:0.2em 1em;
+    border-radius:1em;
+    transition: transform 0.3s ease;
+}
+
+div.favorite-details-buy-btns button.favorite-item-buy-btn:hover{
+    transform: scale(1.1);
+    cursor:pointer;
+}
+
+div.favorite-details-buy-btns button.favorite-fav-item {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 40px; 
+    height: 40px;
+    padding: 0; 
+    background: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+}
+
+div.favorite-details-buy-btns i {
+    font-size: 20px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:0;
+
+    
+}
+
+
+div.favorite-details-buy-btns button.favorite-fav-item:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+
+    
+    background: #f0f0f0;
+}
+
+@media (max-width: 1024px) {
+    div.favorite-container {
+        gap: 0.8em;
+        padding: 0.8em;
+    }
+    
+    div.favorite-card-item {
+        width: calc(33.33% - 1em);
+    }
+}
+
+@media (max-width: 768px) {
+    h2.favorite-heading {
+        font-size: 2.5em;
+        margin-top: 1.5em;
+    }
+    
+    div.favorite-card-item {
+        width: calc(50% - 1em);
+    }
+    
+    div.favorite-item-image-wrapper .favorite-item-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 576px) {
+    h2.favorite-heading {
+        font-size: 2em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
+    
+    div.favorite-container {
+        gap: 0.5em;
+        padding: 0.5em;
+    }
+    
+    div.favorite-card-item {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    div.favorite-details-buy-btns {
+        flex-wrap: wrap;
+        gap: 0.5em;
+        justify-content: center;
+    }
+    
+    div.favorite-details-buy-btns a,
+    div.favorite-details-buy-btns button {
+        flex: 1 1 auto;
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 400px) {
+    div.favorite-title-description-wrapper h3.favorite-item-title {
+        font-size: 1.1em;
+    }
+    
+    div.favorite-item-image-wrapper .favorite-item-image {
+        height: 160px;
+    }
+    
+    div.favorite-details-buy-btns {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    div.favorite-details-buy-btns a,
+    div.favorite-details-buy-btns button {
+        width: 100%;
+    }
+}

@@ -18,6 +18,7 @@ import WriteEditArticle from './components/admin/write-edit-article/WriteEditArt
 import ItemDetails from './components/item-details/ItemDetails'
 import ArticleDetails from './components/article-details/ArticleDetails'
 import ProfileOrderHistory from './components/profile-order-history/ProfileOrderHistory'
+import Favorite from './components/profile-favorites/Favorite'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
      <Route path='/myprofile/cart' element={<Cart />}/>
      <Route path='/myprofile/checkout' element={<Checkout />}/>
      <Route path='/myprofile/orderhistory' element={<ProfileOrderHistory />} />
+     <Route path='/myprofile/favorites' element={<Favorite />} />
 
      <Route path='/admin/create' element={<CreateEditItem tittle='Create' />}/>
      <Route path='/admin/:itemId/edit' element={<CreateEditItem tittle='Edit' />}/>
