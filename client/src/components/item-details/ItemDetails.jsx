@@ -1,23 +1,28 @@
+import { useParams } from 'react-router'
+import { useOneItem } from '../../api/itemApi'
 import styles from './ItemDetails.module.css'
 
 export default function ItemDetails() {
+    const {itemId} = useParams();
+    const { item } = useOneItem(itemId);
+    
+    
+
     return(
     <>
     <div className={styles["whole-wrapper"]}>
 
      <div className={styles["container-v1"]}>
             <div className={styles["image-section-v1"]}>
-                <img src="/tempPics/imad-alassiry-GeqhIp6D84s-unsplash.jpg" alt="NE"/>
+                <img src={item["item-image"]} alt={item.tittle}/>
             </div>
             <div className={styles["details-section-v1"]}>
-                <h1>Malachite Mantel Clock</h1>
-                <div className={styles["category-v1"]}>Category: Vase</div>
-                <div className={styles["condition-v1"]}>Condition: Used</div>
-                <div className={styles["maker-v1"]}>Maker: Unknown</div>
-                <p className={styles["description-v1"]}>
-                    The elegant malachite body of this impressive antique mantel clock creates a stunning visual contrast with the work’s golden gilt bronze mounts. A refined piece that exudes luxury and sophistication.
-                </p>
-                <div className={styles["price-v1"]}>Price: $1224.00</div>
+                <h1>{item.tittle}</h1>
+                <div className={styles["category-v1"]}>Category: {item["item-category"]}</div>
+                <div className={styles["condition-v1"]}>Condition: {item["item-condition"]}</div>
+                <div className={styles["maker-v1"]}>Maker: {item["item-maker"]}</div>
+                <p className={styles["description-v1"]}>{item["item-description"]}</p>
+                <div className={styles["price-v1"]}>Price: ${item["item-price"]}</div>
                 <div className={styles["buttons-v1"]}>
                     <button>Add to Cart</button>
                     <button>Add to Wishlist</button>

@@ -1,8 +1,8 @@
-import { useState } from 'react';
+
 import { Link } from 'react-router';
+import { useGetAllItems } from '../../api/itemApi';
 
 import styles from './Catalog.module.css';
-import { useGetAllItems } from '../../api/itemApi';
 
   export default function Catalog() {
 
@@ -48,7 +48,7 @@ import { useGetAllItems } from '../../api/itemApi';
         
         
       <div className={styles["catalog-container"]}>
-        {false > 0
+        {items.length > 0
         ? items.map(item => <div key={item._id} className={styles["catalog-card-item"]}>
             <div className={styles["item-image-wrapper"]}>
                 <img src={item["item-image"]} alt={item.tittle} className={styles['catalog-item-image']}/>

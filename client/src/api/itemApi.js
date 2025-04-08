@@ -45,4 +45,16 @@ export const useGetAllItems = () => {
     }, []);
 
     return { items };
-}
+};
+
+export const useOneItem = (itemId) => {
+    const [item, setItem] = useState({});
+
+    useEffect(() => {
+        fetchHelper.get(`${baseUrl}/${itemId}`)
+        .then(setItem)
+        .catch((err) => console.log(err.message))
+    } ,[itemId]);
+
+    return { item };
+} 
