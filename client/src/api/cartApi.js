@@ -26,9 +26,20 @@ export const useCart = () => {
     };
 
 
+    const getUserCart = () => {
+        const userCartParams = new URLSearchParams({
+            where: `userId="${userId}"`,
+            load: `item=itemId:items`
+        });
+
+        return fetchHelper.get(`${baseUrl}?${userCartParams.toString()}`)
+    };
+
+
 
     return {
         addToCart,
+        getUserCart,
         
     }
 }

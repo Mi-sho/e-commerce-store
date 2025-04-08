@@ -78,7 +78,8 @@ tr.thead{
 
 .cart-table-img-r img{
     width:100%;
-    max-height:auto;
+    max-height:400px;
+    /* aspect-ratio:2/2; */
    border-radius:1em;
 }
 
