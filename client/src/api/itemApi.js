@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useUserContext } from "../context/userContext"
 import fetchHelper from "../utils/fetchHelper";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -12,13 +12,10 @@ export const useCreateItem = () => {
     const {role, accessToken} = useUserContext();
 
     useEffect(() => {
-
         if(role !== 'admin'){
-            // alert('You are not authorized to make this request!!')
-            // throw new Error('You are not authorized to make this request!!')
             console.log('You are not authorized to make this request!!');
             
-            navigate('/login')
+            navigate('/')
         };
     }, [role,navigate])
 
@@ -35,4 +32,17 @@ export const useCreateItem = () => {
     }
 
     return { createItem: role === 'admin' ? createItem : null };
+};
+
+
+export const useGetAllItems = () => {
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        fetchHelper.get(baseUrl)
+        .then(setItems)
+        .catch((err) => console.log(err.message))
+    }, []);
+
+    return { items };
 }
