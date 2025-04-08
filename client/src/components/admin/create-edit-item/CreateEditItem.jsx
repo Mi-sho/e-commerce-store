@@ -9,7 +9,6 @@ export default function CreateEditItem({tittle}){
 
     const createGameHandler = async(formData) => {
         const itemData = Object.fromEntries(formData);
-        console.log(itemData);
         
         await createItem(itemData);
 

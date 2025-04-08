@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router';
 
 import styles from './Catalog.module.css';
+import { useGetAllItems } from '../../api/itemApi';
 
   export default function Catalog() {
 
-    //  const [true, settrue] = useState(false);
-    
-    //     const trueItemClickHandler = () => {
-    //         settrue(!true)
-    //     }
+    const { items } = useGetAllItems();
+
+
+
     return (
       <>
         <div className={styles["page-wrapper"]}>
@@ -48,23 +48,26 @@ import styles from './Catalog.module.css';
         
         
       <div className={styles["catalog-container"]}>
-        <div className={styles["catalog-card-item"]}>
+        {items.length > 0
+        ? items.map(item => <div key={item._id} className={styles["catalog-card-item"]}>
             <div className={styles["item-image-wrapper"]}>
-                <img src="/tempPics/mcgill-library-y4PqRPqSako-unsplash.jpg" alt="" className={styles['catalog-item-image']}/>
+                <img src={item["item-image"]} alt={item.tittle} className={styles['catalog-item-image']}/>
                 
             </div>
             <div className={styles["title-description-wrapper"]}>
-                <h3 className={styles["item-title"]}>1</h3>
-                <p className={styles["item-description"]}>BAchkaq qko vurti strelkataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <p className={styles['item-price']}>$344</p>
+                <h3 className={styles["item-title"]}>{item.tittle}</h3>
+                <p className={styles["item-description"]}>{item["item-summary"]}</p>
+                <p className={styles['item-price']}>${item["item-price"]}</p>
             </div>
             <div className={styles['details-buy-btns']}>
-                <Link to="/catalog/1/details" className={styles["item-details-tag"]}>Details</Link>
-                <button className={styles['fav-item']} ><i className={true ? "fa-solid fa-heart" :"fa-regular fa-heart"}></i></button>
+                <Link to={`/catalog/${item._id}/details`} className={styles["item-details-tag"]}>Details</Link>
+                <button className={styles['fav-item']} ><i className={false ? "fa-solid fa-heart" :"fa-regular fa-heart"}></i></button>
                 <button className={styles["item-buy-btn"]}>Buy</button>
             </div>
-        </div>
-        <div className={styles["catalog-card-item"]}>
+        </div>)
+        : <h2 className="no-items">NO ITEMS LISTED YES</h2>
+        }
+        {/* <div className={styles["catalog-card-item"]}>
             <div className={styles["item-image-wrapper"]}>
                 <img src="/tempPics/rio-lecatompessy-cJWJgTrFgQA-unsplash.jpg" alt="" className={styles['catalog-item-image']}/>
                 
@@ -127,7 +130,7 @@ import styles from './Catalog.module.css';
                 <button className={styles['fav-item']}><i className="fa-regular fa-heart"></i></button>
                 <button className={styles["item-buy-btn"]}>Buy</button>
             </div>
-        </div>
+        </div> */}
       
       </div>
       </div>
