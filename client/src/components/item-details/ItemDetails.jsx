@@ -1,20 +1,44 @@
-import { useParams } from 'react-router'
-import { useOneItem } from '../../api/itemApi'
+import { useNavigate, useParams } from 'react-router'
+import { useDeleteItem, useOneItem } from '../../api/itemApi'
 import { useUserContext } from '../../context/userContext';
 import { Link } from 'react-router';
 
 import styles from './ItemDetails.module.css'
+import { useState } from 'react';
 
 
 
 export default function ItemDetails() {
+    const navigate = useNavigate();
     const { role, username } = useUserContext();
     const {itemId} = useParams();
     const { item } = useOneItem(itemId);
+    const { deleteItem } = useDeleteItem();
 
+
+    const [isLoading, setIsLoading] = useState (false);
     const isAdmin = role === 'admin';
     const isLogged = username !== undefined;
     
+
+    const itemDeleteHandler = async () => {
+        const isConfirmed = confirm(`Do you really want to delete this item: ${item.tittle}?`);
+
+        if(!isConfirmed){
+            return;
+        }
+
+        try{
+            setIsLoading(true)
+            await deleteItem(itemId);
+            navigate('/catalog')
+        }catch(err){
+            alert(err.message)
+        }finally{
+            setIsLoading(false)
+        }
+
+    };
 
     
 
@@ -36,7 +60,7 @@ export default function ItemDetails() {
                 {isAdmin 
                 ? <div className={styles["buttons-v1"]}>
                     <button><Link to={`/admin/${itemId}/edit`}>Edit</Link></button>
-                    <button>Delete</button>
+                    <button onClick={itemDeleteHandler} disabled={isLoading}>Delete</button>
                 </div>
                 : isLogged ?<div className={styles["buttons-v1"]}>
                     <button>Add to Cart</button>

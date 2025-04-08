@@ -88,4 +88,34 @@ export const useEditItem = () => {
     return {
         editItem,
     }
+};
+
+
+export const useDeleteItem = () => {
+    const navigate = useNavigate();
+    const {role, accessToken} = useUserContext();
+
+    useEffect(() => {
+        if(role !== 'admin'){
+            console.log('You are not authorized to make this request!!');
+            
+            navigate('/')
+        };
+    }, [role,navigate])
+
+
+
+    const deleteItem = (itemId) => {
+        const options = {
+            headers:{
+                'X-Authorization': accessToken,
+            }
+        }
+       return fetchHelper.delete(`${baseUrl}/${itemId}`,options)
+
+    };
+
+    return {
+        deleteItem,
+    }
 }
