@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router";
+import { useUserContext } from "../../../context/userContext";
 
 export default function UserProfile() {
     const [opened, setState] = useState(false);
     const location = useLocation();
+    const {username, email} = useUserContext();
 
     useEffect(() => {
       setState(false);
@@ -23,8 +25,8 @@ export default function UserProfile() {
   "absolute top-full left-0 right-0 mt-2 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600" : 
   "hidden"}>
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-      <div>Bate Mimi</div>
-      <div className="font-medium truncate">name@flowbite.com</div>
+      <div>{username}</div>
+      <div className="font-medium truncate">{email}</div>
     </div>
     <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
       <li>

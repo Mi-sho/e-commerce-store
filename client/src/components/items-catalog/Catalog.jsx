@@ -48,7 +48,7 @@ import { useGetAllItems } from '../../api/itemApi';
         
         
       <div className={styles["catalog-container"]}>
-        {items.length > 0
+        {false > 0
         ? items.map(item => <div key={item._id} className={styles["catalog-card-item"]}>
             <div className={styles["item-image-wrapper"]}>
                 <img src={item["item-image"]} alt={item.tittle} className={styles['catalog-item-image']}/>
@@ -65,7 +65,9 @@ import { useGetAllItems } from '../../api/itemApi';
                 <button className={styles["item-buy-btn"]}>Buy</button>
             </div>
         </div>)
-        : <h2 className="no-items">NO ITEMS LISTED YES</h2>
+        : <div className={styles["cat-heading"]}>
+            <h2 className={styles["no-items"]}>NO ITEMS LISTED YES FOR THE MOMENT</h2>
+            </div>
         }
         {/* <div className={styles["catalog-card-item"]}>
             <div className={styles["item-image-wrapper"]}>
