@@ -36,10 +36,24 @@ export const useCart = () => {
     };
 
 
+    const removeFromCart = (cartItemId) => {
+
+        try{
+             fetchHelper.delete(`${baseUrl}/${cartItemId}`, {
+                headers:{ 'X-Authorization': accessToken }
+            });
+    
+        }catch(err){
+            throw new Error(`Failed to remove: ${err.message}`)
+        }
+    }
+
+
 
     return {
         addToCart,
         getUserCart,
-        
+        removeFromCart,
+
     }
 }
