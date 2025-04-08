@@ -21,13 +21,13 @@ export const useCreateItem = () => {
 
 
 
-    const createItem = (gameData) => {
+    const createItem = (itemData) => {
         const options = {
             headers:{
                 'X-Authorization': accessToken,
             }
         }
-       return fetchHelper.post(baseUrl,gameData,options)
+       return fetchHelper.post(baseUrl,itemData,options)
 
     }
 
@@ -57,4 +57,35 @@ export const useOneItem = (itemId) => {
     } ,[itemId]);
 
     return { item };
-} 
+} ;
+
+
+export const useEditItem = () => {
+
+    const navigate = useNavigate();
+    const {role, accessToken} = useUserContext();
+
+    useEffect(() => {
+        if(role !== 'admin'){
+            console.log('You are not authorized to make this request!!');
+            
+            navigate('/')
+        };
+    }, [role,navigate])
+
+
+
+    const editItem = (itemId,itemData) => {
+        const options = {
+            headers:{
+                'X-Authorization': accessToken,
+            }
+        }
+       return fetchHelper.put(`${baseUrl}/${itemId}`, {...itemData, _id: itemId},options)
+
+    };
+
+    return {
+        editItem,
+    }
+}
