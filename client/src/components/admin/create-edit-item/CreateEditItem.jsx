@@ -1,6 +1,22 @@
+import { useNavigate } from 'react-router'
 import styles from './CreateEditItem.module.css'
+import { useCreateItem } from '../../../api/itemApi';
 
 export default function CreateEditItem({tittle}){
+    const navigate = useNavigate();
+    const { createItem } = useCreateItem();
+
+
+    const createGameHandler = async(formData) => {
+        const itemData = Object.fromEntries(formData);
+        console.log(itemData);
+        
+        await createItem(itemData);
+
+        navigate('/catalog')
+    }
+
+
     return(
     <> 
     <div className={styles["create-edit-container"]}>
@@ -9,7 +25,7 @@ export default function CreateEditItem({tittle}){
         </div>
 
      <div className={styles["create-edit-form-wrapper"]}>
-                    <form action="POST" className={styles["create-edit-form"]}>
+                    <form action={createGameHandler} className={styles["create-edit-form"]}>
                         <div className={styles["item-tittle"]}>
                         <label htmlFor="tittle">Tittle</label>
                         <input type="text" id="tittle" name="tittle"/>
