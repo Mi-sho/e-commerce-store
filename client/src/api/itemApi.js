@@ -67,7 +67,7 @@ export const useEditItem = () => {
 
     useEffect(() => {
         if(role !== 'admin'){
-            console.log('You are not authorized to make this request!!');
+            console.log(' DALI You are not authorized to make this request!!');
             
             navigate('/')
         };
@@ -92,20 +92,20 @@ export const useEditItem = () => {
 
 
 export const useDeleteItem = () => {
-    const navigate = useNavigate();
+    
     const {role, accessToken} = useUserContext();
 
-    useEffect(() => {
-        if(role !== 'admin'){
-            console.log('You are not authorized to make this request!!');
-            
-            navigate('/')
-        };
-    }, [role,navigate])
+    
 
 
 
     const deleteItem = (itemId) => {
+
+        if(role !== 'admin') {
+            throw new Error('You are not authorized!')
+        };
+
+        
         const options = {
             headers:{
                 'X-Authorization': accessToken,
