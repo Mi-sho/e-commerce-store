@@ -10,6 +10,8 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
     const { items } = useGetAllItems();
     const { sortOption,
         sortOptionChoiceHandler,
+        categoryOption,
+        filterCategoryOptionsHandler,
     data} = useSortAndFilter();
 
 
@@ -38,7 +40,13 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
 
                       </select>
 
-                      <select name="sortItemsBy" id="sortItemsBy" className={styles["sort-items"]} defaultValue=''>
+                      <select 
+                        name="sortItemsBy" 
+                        id="sortItemsBy" 
+                        className={styles["sort-items"]} 
+                        value={categoryOption}
+                        onChange={filterCategoryOptionsHandler}
+                      >
                           <option value="" >Filter by category</option>
                           <option value='Paintings'>Paintings</option>
                           <option value='Furnitures'>Furnitures</option>
