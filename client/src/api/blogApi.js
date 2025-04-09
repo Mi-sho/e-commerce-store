@@ -30,4 +30,18 @@ export const useWriteArticle = () => {
     return {
         writeArticle
     }
-}
+};
+
+
+export const useAllArticles = () => {
+    const [data, setArticles] = useState([])
+    useEffect(() => {
+        fetchHelper.get(baseUrl)
+        .then(setArticles)
+        .catch((err) => alert(err.message))
+    }, [])
+
+    return {
+        data,
+    };
+};

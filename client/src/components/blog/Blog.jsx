@@ -1,9 +1,13 @@
+import { Link } from "react-router";
+import { useAllArticles } from "../../api/blogApi";
 import useSortAndFilter from "../../hooks/useSortandFilter"
 import styles from "./Blog.module.css"
 
+const baseUrl = 'http://localhost:3030/data/articles'
+
 export default function Blog() {
 
-    const {sortOption, sortOptionChoiceHandler} = useSortAndFilter();
+    const {sortOption, sortOptionChoiceHandler,data} = useSortAndFilter(baseUrl);
 
     return(
         <> 
@@ -28,19 +32,23 @@ export default function Blog() {
                 <div className={styles["content-table"]}>
                     
                        
-
-                         <div className={styles["blog-article-card"]}>
+                        {data.length > 0
+                         ? data.map(article => <div key={article._id} className={styles["blog-article-card"]}>
                             <a href="/blogs/blogId/details">
-                                <img src="/tempPics/imad-alassiry-GeqhIp6D84s-unsplash.jpg" alt="" className={styles["blog-article-image"]}/>  
+                                <img src={article["article-image"]} alt={article.tittle} className={styles["blog-article-image"]}/>  
                             </a>
                             <div className={styles["blog-article-content"]}>
-                                <h2 className={styles["blog-article-title"]}>Da IMa neshtoaaaaaaaaaaaaaaaaaaaaaaas1er2112r124214124aaaaaaaaaaaaa</h2>
-                                 <p className={styles["blog-article-date"]}>12.12.1222</p>
-                                 <p className={styles["blog-article-description"]}> EDIN DEN E VUZMOJNO DA NAPRAVQ NQKVI NESHTA KOI ZNAEIIEwwwsss</p>
-                                 <a href="/blog/1/details" className={styles["read-article-more"]}>Read full article</a>
+                                <h2 className={styles["blog-article-title"]}>{article.tittle}</h2>
+                                 <p className={styles["blog-article-date"]}>{article["article-date"]}</p>
+                                 <p className={styles["blog-article-description"]}>{article["article-description"]}</p>
+                                 <Link to={`/blog/${article._id}/details`} className={styles["read-article-more"]}>Read full article</Link>
                             </div>
-                        </div>
-                        <div className={styles["blog-article-card"]}>
+                        </div>)
+                        : <div className={styles["cat-heading"]}>
+                                    <h2 className={styles["no-items"]}>NO ITEMS LISTED YES FOR THE MOMENT</h2>
+                                    </div>
+                        }
+                        {/* <div className={styles["blog-article-card"]}>
                                 <img src="/tempPics/eric-park-QbX8A8eHfzw-unsplash.jpg" alt="" className={styles["blog-article-image"]}/>  
                             <div className={styles["blog-article-content"]}>
                                 <h2 className={styles["blog-article-title"]}>Da IMa neshtoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h2>
@@ -57,7 +65,7 @@ export default function Blog() {
                                  <p className={styles["blog-article-description"]}>lorem</p>
                                  <a href="" className={styles["read-article-more"]}>Read full article</a>
                             </div>
-                        </div>
+                        </div> */}
                         {/* <div className={styles["blog-article-card"]}>
                                 <img src="/tempPics/alexandre-valdivia-8hILOCKw5yA-unsplash.jpg" alt="" className={styles["blog-article-image"]}/>  
                             <div className={styles["blog-article-content"]}>
