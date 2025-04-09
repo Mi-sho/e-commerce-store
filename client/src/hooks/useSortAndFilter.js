@@ -12,9 +12,19 @@ Prints: JSON.stringify('Prints'),
 Watches: JSON.stringify('Watches'),
 }
 
+
+const filterByPrice = {
+  '0-150': {min: 0, max: 150},
+  '150-700': {min: 150, max: 700},  
+  '700-2500': {min: 700, max: 2500},  
+  '2500+': {min: 2500 }
+
+}
+
 const useSortAndFilter = (initialSortOption = '') => {
     const [ sortOption, setSortOption ] = useState(initialSortOption);
     const [categoryOption, setCategoryOption] = useState('');
+    const [priceOption, setPriceOption ] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -25,6 +35,10 @@ const useSortAndFilter = (initialSortOption = '') => {
     const filterCategoryOptionsHandler = (e) => {
         setCategoryOption(e.currentTarget.value)
     };
+
+    const filterPriceOptionsHandler = (e) => {
+        setPriceOption(e.currentTarget.value)
+    }
 
     
 
@@ -42,6 +56,15 @@ const useSortAndFilter = (initialSortOption = '') => {
 
             if(categoryOption){
                 buildFilter.push(`itemCategory=${filterCategories[categoryOption]}`)
+            };
+
+            if(priceOption){
+                const {min, max} = filterByPrice[priceOption];
+                if(min !== undefined && max !== undefined) {
+                    buildFilter.push(`itemPrice>=${min} AND itemPrice<=${max}`);
+                } else if(min !== undefined) {
+                    buildFilter.push(`itemPrice >= ${min}`)
+                }
             }
 
             if(sortOption){
@@ -50,7 +73,7 @@ const useSortAndFilter = (initialSortOption = '') => {
             
 
             if(buildFilter.length > 0 ) {
-                qParams.append('where', buildFilter.join(''))
+                qParams.append('where', buildFilter.join(' AND '))
             }
             
             
@@ -67,7 +90,7 @@ const useSortAndFilter = (initialSortOption = '') => {
         }
         getData();
 
-    }, [sortOption,categoryOption]);
+    }, [sortOption,categoryOption,priceOption]);
 
 
     return{
@@ -75,6 +98,8 @@ const useSortAndFilter = (initialSortOption = '') => {
         sortOptionChoiceHandler,
         categoryOption,
         filterCategoryOptionsHandler,
+        priceOption,
+        filterPriceOptionsHandler,
         data
     }
 

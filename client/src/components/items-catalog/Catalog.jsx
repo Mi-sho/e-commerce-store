@@ -7,12 +7,14 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
 
   export default function Catalog() {
 
-    const { items } = useGetAllItems();
+    
     const { sortOption,
         sortOptionChoiceHandler,
         categoryOption,
         filterCategoryOptionsHandler,
-    data} = useSortAndFilter();
+        priceOption,
+        filterPriceOptionsHandler,
+         data} = useSortAndFilter();
 
 
 
@@ -41,8 +43,8 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
                       </select>
 
                       <select 
-                        name="sortItemsBy" 
-                        id="sortItemsBy" 
+                        name="filterByCategory" 
+                        id="filterByCategory" 
                         className={styles["sort-items"]} 
                         value={categoryOption}
                         onChange={filterCategoryOptionsHandler}
@@ -56,12 +58,18 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
                           <option value='Watches'>Watches</option>
                       </select>
 
-                      <select name="sortItemsBy" id="sortItemsBy" className={styles["sort-items"]} defaultValue=''>
+                      <select 
+                        name="filterByPrice" 
+                        id="filterByPrice" 
+                        className={styles["sort-items"]} 
+                        value={priceOption}
+                        onChange={filterPriceOptionsHandler}
+                      >
                           <option value="" >Filter by price</option>
-                          <option value='0-150'>0-150</option>
-                          <option value='150-700'>150-700</option>
-                          <option value='700-2500'>700-2500</option>
-                          <option value='2500+'>2500+</option>
+                          <option value='0-150'>$ 0-150</option>
+                          <option value='150-700'>$ 150-700</option>
+                          <option value='700-2500'>$ 700-2500</option>
+                          <option value='2500+'>$ 2500+</option>
 
 
                       </select>
