@@ -1357,7 +1357,7 @@
                 "item-condition": "Old",
                 "item-maker": "Nishimura Shigenaga",
                 "item-description": "Shoki subduing a demon, with the Kanda Myojin shrine in the distance. Benizuri-e on paper.\n\n",
-                "item-price": "275",
+                itemPrice: 275,
                 _createdOn: 1744099754413,
                 _id: "1fac9708-aa08-4301-b1b4-cede5f4982a7"
             },
@@ -1370,7 +1370,7 @@
                 "item-condition": "Used",
                 "item-maker": "Rolex",
                 "item-description": "This is a very attractive Rolex wristwatch which is hallmarked for the year 1954. The watch has a superb, 9ct yellow gold case, the sides and lugs of which are milled in a ‘coin-edge’ style, a design seldom seen on vintage Rolex watches. The dial is in lovely condition with a wonderful, warm patina and the gold coloured leaf hands contrast with the blued steel of the centre seconds hand. Manually wound, the movement is a Rolex calibre 1210 with 17 jewels and the watch is accompanied by its original Rolex presentation case.",
-                "item-price": "1891",
+                itemPrice: 1891,
                 _createdOn: 1744099637765,
                 _id: "7eb23d35-7788-4f62-a826-4cc682453fcd"
             },
@@ -1383,7 +1383,7 @@
                 "item-condition": "Used",
                 "item-maker": "Khu Công nghiệp Bát Tràng",
                 "item-description": "Beautiful ceramic vase with glazes.\nFired over 1000C.",
-                "item-price": "2330",
+                itemPrice: 2330,
                 _createdOn: 1744099510029,
                 _id: "b926651e-0b05-4fb0-a2f9-025e000214bf"
             },
@@ -1396,7 +1396,7 @@
                 "item-condition": "Used",
                 "item-maker": "Robert Hills",
                 "item-description": "Material: oil painting\nDate: 1812\nVery old, but really good oil painting by the famous painter Robert Hills",
-                "item-price": "3504",
+                itemPrice: 3504,
                 _createdOn: 1744099295666,
                 _id: "4ea6d8d0-fd3f-4bde-969b-14160e250b50"
             }

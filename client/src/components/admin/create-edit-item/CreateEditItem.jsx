@@ -101,8 +101,8 @@ export default function CreateEditItem({ tittle }) {
             </div>
 
             <div className={styles["item-price"]}>
-              <label htmlFor="item-price">Price</label>
-              <input type="number" id="item-price" name="item-price"  defaultValue={item["item-price"] || ''} required/>
+              <label htmlFor="itemPrice">Price</label>
+              <input type="number" id="itemPrice" name="itemPrice"  defaultValue={item.itemPrice || ''} required/>
             </div>
 
             <button type="submit" className={styles["create-edit-sbm-btn"]}>

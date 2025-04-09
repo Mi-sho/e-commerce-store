@@ -14,7 +14,7 @@ export const useCart = () => {
             userId,
             tittle: item.tittle,
             image: item["item-image"],
-            price: item["item-price"]
+            price: item.itemPrice
         };
 
 
