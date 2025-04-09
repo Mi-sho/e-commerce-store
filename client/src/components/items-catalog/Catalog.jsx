@@ -14,6 +14,10 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
         filterCategoryOptionsHandler,
         priceOption,
         filterPriceOptionsHandler,
+        inputSearch,
+        searchInputHandler,
+        fireSearch,
+        loading,
          data} = useSortAndFilter();
 
 
@@ -23,8 +27,15 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
         <div className={styles["page-wrapper"]}>
                 <div className={styles["container-search-sort-items"]}>
                       <span>
-                      <input type="text" className={styles["search-items-bar"]} placeholder="Search..." name="search-items"/>
-                      <button className="search-items-btn">Search</button>
+                      <input 
+                        type="text" 
+                        className={styles["search-items-bar"]} 
+                        placeholder="Search..." 
+                        name="search-items"
+                        value={inputSearch}
+                        onChange={searchInputHandler}
+                      />
+                      <button className="search-items-btn" onClick={fireSearch}>Search</button>
                       </span>
 
                         <select
