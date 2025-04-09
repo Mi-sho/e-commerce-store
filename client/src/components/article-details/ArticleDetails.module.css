@@ -62,7 +62,7 @@
 .article-button {
     display: flex;
     justify-content: center;
- 
+    gap:1em;
     margin-top: 20px;
 }
 
@@ -72,7 +72,7 @@
     border: none;
     padding: 14px 30px;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 2em;
     font-size: 18px;
     font-weight: bold;
     transition: background 0.3s ease;

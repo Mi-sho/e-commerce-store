@@ -1,11 +1,16 @@
-import { useNavigate } from 'react-router';
-import styles from './WriteEditArticle.module.css';
-import { useWriteArticle } from '../../../api/blogApi';
+import { useNavigate, useParams } from 'react-router';
+import { useEditArticle, useOneArticle, useWriteArticle } from '../../../api/blogApi';
 
+import styles from './WriteEditArticle.module.css';
 
 export default function WriteEditArticle({tittle}) {
         const navigate = useNavigate();
         const { writeArticle } = useWriteArticle();
+        const {editArticle} = useEditArticle();
+        const {articleId} = useParams();
+        const { article } = articleId ? useOneArticle(articleId) : {article: {}}
+
+        const isEdit = tittle === "Edit";
         
         const writeArticleHandler = async (formData) => {
             const articleData = Object.fromEntries(formData);
@@ -18,6 +23,17 @@ export default function WriteEditArticle({tittle}) {
                 
             }
         };
+
+        const editArticleHandler = async (formData) => {
+            const articleData = Object.fromEntries(formData);
+
+            try{
+                await editArticle(articleId,articleData);
+                navigate(`/blog/${articleId}/details`)
+            }catch(err) {
+                alert(err.message);
+            }
+        }
     
         return(
             <>
@@ -27,38 +43,38 @@ export default function WriteEditArticle({tittle}) {
                     </div>
             
                  <div className={styles["write-edit-form-wrapper"]}>
-                                <form action={writeArticleHandler} className={styles["write-edit-form"]}>
+                                <form action={isEdit ? editArticleHandler : writeArticleHandler} className={styles["write-edit-form"]}>
 
                                     <div className={styles["article-tittle"]}>
                                     <label htmlFor="tittle">Tittle</label>
-                                    <input type="text" id="tittle" name="tittle" required/>
+                                    <input type="text" id="tittle" name="tittle" defaultValue={article.tittle || ''} required/>
                                     </div>      
             
             
                                     <div className={styles["article-author"]}>
                                     <label htmlFor="article-author">Author</label>
-                                    <input type="text" id="article-author" name="article-author" required/>
+                                    <input type="text" id="article-author" name="article-author" defaultValue={article["article-author"] || ''} required/>
                                     </div>
             
                                     <div className={styles["article-image"]}>
                                     <label htmlFor="article-image">Image</label>
-                                    <input type="text" id="article-image" name="article-image"  required/>
+                                    <input type="text" id="article-image" name="article-image" defaultValue={article["article-image"] || ''}  required/>
                                     </div>
 
                                     <div className={styles["article-image-caption"]}>
                                     <label htmlFor="article-image-caption">Image caption</label>
-                                    <input type="text" id="article-image-caption" name="article-image-caption"/>
+                                    <input type="text" id="article-image-caption" name="article-image-caption" defaultValue={article["article-image-caption"] || ''} required/>
                                     </div>
             
             
                                     <div className={styles["article-description"]}>
                                     <label htmlFor="article-description">Description</label>
-                                    <textarea type="text" id="article-description" name="article-description" required/>
+                                    <textarea type="text" id="article-description" name="article-description" defaultValue={article["article-description"] || ''} required/>
                                     </div>
             
                                     <div className={styles["article-date"]}>
                                     <label htmlFor="article-date">Date</label>
-                                    <input type="text" id="article-date" name="article-date"/>
+                                    <input type="text" id="article-date" name="article-date" defaultValue={article["article-date"] || ''} required/>
                                     </div>
             
                                     <button type='submit' className={styles['write-edit-sbm-btn']}>{tittle} article</button>

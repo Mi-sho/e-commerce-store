@@ -58,4 +58,57 @@ export const useOneArticle = (articleId) => {
   return {
     article,
   }
+};
+
+export const useEditArticle = () => {
+    const navigate = useNavigate();
+    const {role, accessToken} = useUserContext();
+
+    useEffect(() => {
+        if(role !== 'admin'){
+            console.log(' DALI You are not authorized to make this request!!');
+            
+            navigate('/')
+        };
+    }, [role,navigate]);
+
+
+     const editArticle = (articleId,articleData) => {
+            const options = {
+                headers:{
+                    'X-Authorization': accessToken,
+                }
+            }
+           return fetchHelper.put(`${baseUrl}/${articleId}`, {...articleData, _id: articleId},options)
+    
+        };
+
+        return {
+            editArticle,
+        }
 }
+
+
+export const useDeleteArticle = () => {
+    
+    const {role, accessToken} = useUserContext();
+
+    const deleteArticle = (articleId) => {
+        if(role !== 'admin') {
+            throw new Error ('You are not the admin');
+        };
+
+        const options = {
+            headers:{
+                'X-Authorization': accessToken,
+            }
+        }
+     return fetchHelper.delete(`${baseUrl}/${articleId}`,options)
+    
+        };
+    
+        return {
+            deleteArticle,
+        }
+
+};

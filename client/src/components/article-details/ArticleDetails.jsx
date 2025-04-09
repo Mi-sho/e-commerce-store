@@ -1,16 +1,37 @@
-import { useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import styles from './ArticleDetails.module.css';
 import { useUserContext } from '../../context/userContext';
-import { useOneArticle } from '../../api/blogApi';
+import { useDeleteArticle, useOneArticle } from '../../api/blogApi';
+import { useState } from 'react';
 
 export default function ArticleDetails() {
     const navigate = useNavigate();
-    const {role,username} = useUserContext();
+    const {role} = useUserContext();
     const {articleId} = useParams();
-    console.log(articleId);
-    
     const {article} = useOneArticle(articleId);
+    const [isLoading, setIsLoading] = useState(false);
+    const {deleteArticle} = useDeleteArticle();
+    
+    
+    const isAdmin = role === 'admin';
+    
+ const articleDeleteHandler = async () => {
+    const isConfirmed = confirm(`Do you really want to delete this item: ${article.tittle}?`);
 
+    if(!isConfirmed){
+        return;
+    }
+
+    try{
+        setIsLoading(true);
+        await deleteArticle(articleId);
+        navigate('/blog')
+    }catch(err) {
+        alert(err.message)
+    }finally{
+        setIsLoading(false);
+    }
+ }
 
     return(
         <>
@@ -35,9 +56,13 @@ export default function ArticleDetails() {
            {article["article-description"]}
         </p>
     </div>
+    {isAdmin?
     <div className={styles["article-button"]}>
-        <button className={styles["like-button"]}>Like</button>
+        <button className={styles["like-button"]}><Link to={`/admin/${articleId}/edit-article`}>Edit</Link></button>
+        <button className={styles["like-button"]} onClick={articleDeleteHandler} disabled={isLoading}>Delete</button>
     </div>
+    :null
+    }
 </div>
         </>
     )
