@@ -35,9 +35,9 @@ export default function WriteEditArticle({tittle}) {
                                     </div>      
             
             
-                                    <div className={styles["article-summary"]}>
-                                    <label htmlFor="article-summary">Summary</label>
-                                    <input type="text" id="article-summary" name="article-summary" required/>
+                                    <div className={styles["article-author"]}>
+                                    <label htmlFor="article-author">Author</label>
+                                    <input type="text" id="article-author" name="article-author" required/>
                                     </div>
             
                                     <div className={styles["article-image"]}>
@@ -58,7 +58,7 @@ export default function WriteEditArticle({tittle}) {
             
                                     <div className={styles["article-date"]}>
                                     <label htmlFor="article-date">Date</label>
-                                    <input type="number" id="article-date" name="article-date"/>
+                                    <input type="text" id="article-date" name="article-date"/>
                                     </div>
             
                                     <button type='submit' className={styles['write-edit-sbm-btn']}>{tittle} article</button>

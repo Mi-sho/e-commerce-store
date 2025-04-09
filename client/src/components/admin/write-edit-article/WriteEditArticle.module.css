@@ -39,7 +39,7 @@ form.write-edit-form{
 
 }
 
-div.article-tittle,.article-summary,.article-date,.article-description,.article-image{
+div.article-tittle,.article-author,.article-date,.article-description,.article-image{
     display:flex;
     flex-direction:column;
 

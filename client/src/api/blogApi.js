@@ -45,3 +45,17 @@ export const useAllArticles = () => {
         data,
     };
 };
+
+export const useOneArticle = (articleId) => {
+  const [ article , setArticle ] = useState({});
+
+  useEffect(() => {
+  fetchHelper.get(`${baseUrl}/${articleId}`)
+  .then(setArticle)
+  .catch(err => alert(err.message))
+  }, [articleId] )
+ 
+  return {
+    article,
+  }
+}
