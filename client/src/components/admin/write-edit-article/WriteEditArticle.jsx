@@ -1,7 +1,24 @@
+import { useNavigate } from 'react-router';
 import styles from './WriteEditArticle.module.css';
+import { useWriteArticle } from '../../../api/blogApi';
 
 
 export default function WriteEditArticle({tittle}) {
+        const navigate = useNavigate();
+        const { writeArticle } = useWriteArticle();
+        
+        const writeArticleHandler = async (formData) => {
+            const articleData = Object.fromEntries(formData);
+
+            try{
+                await writeArticle(articleData);
+                navigate('/blog')
+            }catch(err) {
+                console.log(err.message);
+                
+            }
+        };
+    
         return(
             <>
             <div className={styles["write-edit-container"]}>
@@ -10,7 +27,7 @@ export default function WriteEditArticle({tittle}) {
                     </div>
             
                  <div className={styles["write-edit-form-wrapper"]}>
-                                <form action="POST" className={styles["write-edit-form"]}>
+                                <form action={writeArticleHandler} className={styles["write-edit-form"]}>
 
                                     <div className={styles["article-tittle"]}>
                                     <label htmlFor="tittle">Tittle</label>

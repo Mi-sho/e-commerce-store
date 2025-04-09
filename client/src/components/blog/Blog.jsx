@@ -1,6 +1,9 @@
+import useSortAndFilter from "../../hooks/useSortandFilter"
 import styles from "./Blog.module.css"
 
 export default function Blog() {
+
+    const {sortOption, sortOptionChoiceHandler} = useSortAndFilter();
 
     return(
         <> 
@@ -11,9 +14,15 @@ export default function Blog() {
                     <input type="text" className={styles["search-blog-bar"]} placeholder="Search..." name="search-blog"/>
                     <button className="search-blogs-btn">Search</button>
                     </span>
-                    <select name="sortBlogsBy" id="sortBlogsBy" className={styles["sort-blogs"]}>
-                        <option value='created_at_desc'>Newest</option>
-                        <option value='created_at_asc'>Oldest</option>
+                    <select 
+                        name="sortBlogsBy" 
+                        id="sortBlogsBy" 
+                        className={styles["sort-blogs"]}
+                        value={sortOption}
+                        onChange={sortOptionChoiceHandler}
+                    >
+                        <option value='_createdOn desc'>Newest</option>
+                        <option value='_createdOn'>Oldest</option>
                     </select>
                 </div>
                 <div className={styles["content-table"]}>
