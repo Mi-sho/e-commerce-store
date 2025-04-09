@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react"
+import {  useEffect, useState } from "react"
 import fetchHelper from "../utils/fetchHelper";
 
 const baseUrl = 'http://localhost:3030/data/items'
@@ -21,10 +21,12 @@ const filterByPrice = {
 
 }
 
-const useSortAndFilter = (initialSortOption = '') => {
+const useSortAndFilter = (url,initialSortOption = '') => {
     const [ sortOption, setSortOption ] = useState(initialSortOption);
     const [categoryOption, setCategoryOption] = useState('');
     const [priceOption, setPriceOption ] = useState('');
+    const [inputSearch, setInputSearch] = useState('');
+    const [fetchSearch, setFetchSearch] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -38,7 +40,18 @@ const useSortAndFilter = (initialSortOption = '') => {
 
     const filterPriceOptionsHandler = (e) => {
         setPriceOption(e.currentTarget.value)
+    };
+
+    const searchInputHandler = (e) => {
+        setInputSearch(e.currentTarget.value);
     }
+
+    const fireSearch = () => {
+        setFetchSearch(inputSearch);
+    }
+
+   
+
 
     
 
@@ -67,6 +80,10 @@ const useSortAndFilter = (initialSortOption = '') => {
                 }
             }
 
+            if(fetchSearch){
+                buildFilter.push(`tittle LIKE ${JSON.stringify(fetchSearch)}`)
+            }
+
             if(sortOption){
                 qParams.append('sortBy', sortOption);
             };
@@ -78,7 +95,7 @@ const useSortAndFilter = (initialSortOption = '') => {
             
             
                 try{
-                     const result = await fetchHelper.get(`${baseUrl}?${qParams}`)
+                     const result = await fetchHelper.get(`${url ? url : baseUrl}?${qParams}`)
 
                      setData(result);
                 }catch(err) {
@@ -90,7 +107,7 @@ const useSortAndFilter = (initialSortOption = '') => {
         }
         getData();
 
-    }, [sortOption,categoryOption,priceOption]);
+    }, [sortOption,categoryOption,priceOption,fetchSearch]);
 
 
     return{
@@ -100,6 +117,10 @@ const useSortAndFilter = (initialSortOption = '') => {
         filterCategoryOptionsHandler,
         priceOption,
         filterPriceOptionsHandler,
+        inputSearch,
+        searchInputHandler,
+        fireSearch,
+        loading,
         data
     }
 
