@@ -3,10 +3,14 @@ import { Link } from 'react-router';
 import { useGetAllItems } from '../../api/itemApi';
 
 import styles from './Catalog.module.css';
+import useSortAndFilter from '../../hooks/useSortandFilter';
 
   export default function Catalog() {
 
     const { items } = useGetAllItems();
+    const { sortOption,
+        sortOptionChoiceHandler,
+    data} = useSortAndFilter();
 
 
 
@@ -18,29 +22,38 @@ import styles from './Catalog.module.css';
                       <input type="text" className={styles["search-items-bar"]} placeholder="Search..." name="search-items"/>
                       <button className="search-items-btn">Search</button>
                       </span>
-                      <select name="sortItemsBy" id="sortItemsBy" className={styles["sort-items"]} defaultValue=''>
+
+                        <select
+                            name="sortItemsBy"
+                            id="sortItemsBy"
+                            className={styles["sort-items"]}
+                            value={sortOption}
+                            onChange={sortOptionChoiceHandler}
+                        >
                           <option value="" >Sort by...</option>
-                          <option value='created_at_desc'>Newest</option>
-                          <option value='created_at_asc'>Oldest</option>
-                          <option value='created_at_asc'>Price up</option>
-                          <option value='created_at_asc'>Price down </option>
+                          <option value='_createdOn desc'>Newest</option>
+                          <option value='_createdOn'>Oldest</option>
+                          <option value='itemPrice desc'>Price: highest first</option>
+                          <option value='itemPrice'>Price: lowest first </option>
 
                       </select>
+
                       <select name="sortItemsBy" id="sortItemsBy" className={styles["sort-items"]} defaultValue=''>
                           <option value="" >Filter by category</option>
-                          <option value='created_at_desc'>Paintings</option>
-                          <option value='created_at_asc'>Furnitures</option>
-                          <option value='created_at_asc'>Jewellery</option>
-                          <option value='created_at_asc'>Sculptures</option>
-                          <option value='created_at_asc'>Prints</option>
-                          <option value='created_at_asc'>Watches</option>
+                          <option value='Paintings'>Paintings</option>
+                          <option value='Furnitures'>Furnitures</option>
+                          <option value='Jewellery'>Jewellery</option>
+                          <option value='Sculptures'>Sculptures</option>
+                          <option value='Prints'>Prints</option>
+                          <option value='Watches'>Watches</option>
                       </select>
+
                       <select name="sortItemsBy" id="sortItemsBy" className={styles["sort-items"]} defaultValue=''>
                           <option value="" >Filter by price</option>
-                          <option value='created_at_desc'>0-150</option>
-                          <option value='created_at_asc'>150-700</option>
-                          <option value='created_at_asc'>700-2500</option>
-                          <option value='created_at_asc'>2500+</option>
+                          <option value='0-150'>0-150</option>
+                          <option value='150-700'>150-700</option>
+                          <option value='700-2500'>700-2500</option>
+                          <option value='2500+'>2500+</option>
 
 
                       </select>
@@ -48,8 +61,8 @@ import styles from './Catalog.module.css';
         
         
       <div className={styles["catalog-container"]}>
-        {items.length > 0
-        ? items.map(item => <div key={item._id} className={styles["catalog-card-item"]}>
+        {data.length > 0
+        ? data.map(item => <div key={item._id} className={styles["catalog-card-item"]}>
             <div className={styles["item-image-wrapper"]}>
                 <img src={item["item-image"]} alt={item.tittle} className={styles['catalog-item-image']}/>
                 
@@ -57,7 +70,7 @@ import styles from './Catalog.module.css';
             <div className={styles["title-description-wrapper"]}>
                 <h3 className={styles["item-title"]}>{item.tittle}</h3>
                 <p className={styles["item-description"]}>{item["item-summary"]}</p>
-                <p className={styles['item-price']}>${item["item-price"]}</p>
+                <p className={styles['item-price']}>${item.itemPrice}</p>
             </div>
             <div className={styles['details-buy-btns']}>
                 <Link to={`/catalog/${item._id}/details`} className={styles["item-details-tag"]}>Details</Link>
