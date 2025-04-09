@@ -14,6 +14,9 @@ export default function CreateEditItem({ tittle }) {
   const createItemHandler = async (formData) => {
     const itemData = Object.fromEntries(formData);
 
+    const price = Number(itemData.itemPrice);
+    itemData.itemPrice = price;
+
     try{
 
         await createItem(itemData);
@@ -28,6 +31,8 @@ export default function CreateEditItem({ tittle }) {
   const editItemHandler = async (formData) => {
       const itemData = Object.fromEntries(formData);
 
+      const price = Number(itemData.itemPrice);
+    itemData.itemPrice = price;
       try{
 
           await editItem(itemId,itemData);
@@ -67,8 +72,8 @@ export default function CreateEditItem({ tittle }) {
             </div>
 
             <div className={styles["item-category"]}>
-              <label htmlFor="item-category">Category</label>
-              <select type="text" id="item-category" name="item-category" defaultChecked={item["item-category"] || ''} required>
+              <label htmlFor="itemCategory">Category</label>
+              <select type="text" id="itemCategory" name="itemCategory" defaultChecked={item.itemCategory || ''} required>
                 <option value="">Choose category</option>
                 <option value="Paintings">Paintings</option>
                 <option value="Furnitures">Furnitures</option>

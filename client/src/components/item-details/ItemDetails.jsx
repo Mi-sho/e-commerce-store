@@ -67,7 +67,7 @@ export default function ItemDetails() {
             </div>
             <div className={styles["details-section-v1"]}>
                 <h1>{item.tittle}</h1>
-                <div className={styles["category-v1"]}>Category: {item["item-category"]}</div>
+                <div className={styles["category-v1"]}>Category: {item.itemCategory}</div>
                 <div className={styles["condition-v1"]}>Condition: {item["item-condition"]}</div>
                 <div className={styles["maker-v1"]}>Maker: {item["item-maker"]}</div>
                 <p className={styles["description-v1"]}>{item["item-description"]}</p>
