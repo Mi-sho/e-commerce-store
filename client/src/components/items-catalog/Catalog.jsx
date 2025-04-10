@@ -5,6 +5,7 @@ import { useGetAllItems, useGetItemsPerPage } from '../../api/itemApi';
 import styles from './Catalog.module.css';
 import useSortAndFilter from '../../hooks/useSortandFilter';
 import { usePagination } from '../../hooks/usePagination';
+import { addItemToCart } from '../../api/cartApi';
 
   export default function Catalog() {
 
@@ -30,6 +31,12 @@ import { usePagination } from '../../hooks/usePagination';
 
         
         const filteredPaginatedData = filteredData.slice((currPage - 1) * 5, currPage * 5)
+
+
+         const addToCartClickHandler = (itemId) => {
+                const response = addItemToCart(itemId);
+                alert(response.message)
+            };
 
     return (
       <>
@@ -111,7 +118,7 @@ import { usePagination } from '../../hooks/usePagination';
             <div className={styles['details-buy-btns']}>
                 <Link to={`/catalog/${item._id}/details`} className={styles["item-details-tag"]}>Details</Link>
                 <button className={styles['fav-item']} ><i className={false ? "fa-solid fa-heart" :"fa-regular fa-heart"}></i></button>
-                <button className={styles["item-buy-btn"]}>Buy</button>
+                <button onClick={() => addToCartClickHandler(item._id)} className={styles["item-buy-btn"]}>Buy</button>
             </div>
         </div>)
         : <div className={styles["cat-heading"]}>

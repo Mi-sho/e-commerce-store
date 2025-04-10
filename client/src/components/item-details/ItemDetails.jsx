@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 import styles from './ItemDetails.module.css';
 import { useState } from 'react';
-import { useCart } from '../../api/cartApi';
+import { addItemToCart } from '../../api/cartApi';
 
 
 
@@ -15,7 +15,7 @@ export default function ItemDetails() {
     const {itemId} = useParams();
     const { item } = useOneItem(itemId);
     const { deleteItem } = useDeleteItem();
-    const { addToCart } = useCart();
+    // const { addToCart } = useCart();
 
 
     const [isLoading, setIsLoading] = useState (false);
@@ -44,14 +44,19 @@ export default function ItemDetails() {
     };
 
 
-    const addToCartClickHandler = async () => {
-        try{
-            await addToCart(item);
-            alert('Item has been added to cart! :)')
-        }catch(err) {
-            alert('Something went wrong: ' + err.message)
-        }
-    } 
+    // const addToCartClickHandler = async () => {
+    //     try{
+    //         await addToCart(item);
+    //         alert('Item has been added to cart! :)')
+    //     }catch(err) {
+    //         alert('Something went wrong: ' + err.message)
+    //     }
+    // } 
+
+    const addToCartClickHandler = (itemId) => {
+        const response = addItemToCart(itemId);
+        alert(response.message)
+    };
 
 
 
@@ -79,7 +84,7 @@ export default function ItemDetails() {
                 </div>
                 : isLogged 
                     ? <div className={styles["buttons-v1"]}>
-                    <button onClick={addToCartClickHandler}>Add to Cart</button>
+                    <button onClick={() => addToCartClickHandler(itemId)}>Add to Cart</button>
                     <button>Add to Wishlist</button>
                         </div>
                   : ''

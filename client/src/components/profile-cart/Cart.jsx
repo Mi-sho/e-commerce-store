@@ -1,11 +1,11 @@
 import {  useNavigate } from "react-router";
 import styles from "./Cart.module.css";
 import { useEffect, useState } from "react";
-import { useCart } from "../../api/cartApi";
+// import { useCart } from "../../api/cartApi";
 
 export default function Cart() {
     const navigate = useNavigate();
-    const { getUserCart, removeFromCart } = useCart();
+    // const { getUserCart, removeFromCart } = useCart();
     const [cartItems, setCartItems] = useState([]);
 
     const CheckOutClickHandler = () => {
@@ -13,10 +13,10 @@ export default function Cart() {
     }
     
 
-    useEffect(() => {
-      getUserCart()
-      .then(setCartItems)
-    }, [])
+    // useEffect(() => {
+    //   getUserCart()
+    //   .then(setCartItems)
+    // }, [])
     
 
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0)
@@ -64,18 +64,6 @@ export default function Cart() {
           <td  data-label="Action" className={styles["cart-table-btn-r"]}><button onClick={() => removeCartItemClickHandler(item._id)}>Remove</button></td>
         </tr> )}
         
-        {/* <tr>
-          <td data-label="Image" className={styles["cart-table-img-r"]}><img src="/tempPics/IMG_20241112_131110.jpg" alt="" /></td>
-          <td data-label="Item" className={styles["cart-table-item-r"]}>Unique antique Chinassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssslot of 100 vases with floral motifs</td>
-          <td data-label="Price" className={styles["cart-table-price-r"]}>$499</td>
-          <td data-label="Action"  className={styles["cart-table-btn-r"]}><button>Remove</button></td>
-        </tr>
-        <tr>
-          <td data-label="Image" className={styles["cart-table-img-r"]}><img src="/tempPics/birmingham-museums-trust-HEEvYhNzpEo-unsplash.jpg" alt="" /></td>
-          <td data-label="Item" className={styles["cart-table-item-r"]}>Unique antique Chinassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssslot of 100 vases with floral motifs</td>
-          <td data-label="Price" className={styles["cart-table-price-r"]}>$499</td>
-          <td data-label="Action"  className={styles["cart-table-btn-r"]}><button>Remove</button></td>
-        </tr> */}
         </tbody>
 
       </table>
