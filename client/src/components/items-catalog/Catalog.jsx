@@ -7,7 +7,7 @@ import useSortAndFilter from '../../hooks/useSortAndFilter';
 import { usePagination } from '../../hooks/usePagination';
 import { addItemToCart } from '../../api/cartApi';
 import { useUserContext } from '../../context/UserContext';
-import useAuth from '../../hooks/useAuth';
+
 
   export default function Catalog() {
     const { username} = useUserContext();
