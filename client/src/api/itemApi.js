@@ -54,7 +54,7 @@ export const useOneItem = (itemId) => {
 
     useEffect(() => {
         if(!itemId) return;
-        
+
         fetchHelper.get(`${baseUrl}/${itemId}`)
         .then(setItem)
         .catch((err) => console.log(err.message))
@@ -121,5 +121,16 @@ export const useDeleteItem = () => {
 
     return {
         deleteItem,
+    }
+}
+
+
+export const useGetItemsPerPage = async (offset = 0,pageSize = 5) => {
+    try{
+        const data = await fetchHelper.get(`${baseUrl}?offset=${offset}&pageSize=${pageSize}`)
+       return data;
+    }catch(err) {
+        console.error(`Pagination fetch error: ${err.message}`);
+        return [];
     }
 }

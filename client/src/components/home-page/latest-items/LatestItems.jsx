@@ -5,7 +5,7 @@ export default function LatestItems() {
         <>
         <div className="relative w-full p-6 mx-auto overflow-hidden  rounded-xl mt-3">
             <div className="flex flex-row justify-between ">
-            <Link to="/products" className="self-center cursor-pointer underline"> View All Items</Link>
+            <Link to="/catalog" className="self-center cursor-pointer underline"> View All Items</Link>
             <h2 className="p-3 pb-0 text-xl font-bold self-end order-first">Newest items</h2>
             </div>
       <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${0 * 100}%)` }}>
