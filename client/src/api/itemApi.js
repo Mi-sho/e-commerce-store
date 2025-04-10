@@ -134,3 +134,13 @@ export const useGetItemsPerPage = async (offset = 0,pageSize = 5) => {
         return [];
     }
 }
+
+export const useGetNewestItems = async (offset = 0,pageSize = 20) => {
+    try{
+        const data = await fetchHelper.get(`${baseUrl}?offset=${offset}&pageSize=${pageSize}`)
+       return data;
+    }catch(err) {
+        console.error(`Pagination fetch error: ${err.message}`);
+        return [];
+    }
+}
