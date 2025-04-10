@@ -34,17 +34,16 @@ div.container-search-sort-items span input{
         display:inline-block;
 }
 div.container-search-sort-items span button{
-     border:2px solid black;
-     background-color: yellow;
+     border:1px solid black;
+     background-color:#c9ae87;
      border-radius: 2em;
      flex-grow:1;
-     transition: background 0.3s ease, color 0.3s ease;
+     transition: transform 0.3s ease;
 }
     
     
 div.container-search-sort-items span button:hover{
-     color:red;
-     background:green;
+    transform: scale(1.2);
      cursor:pointer;
 }
     
