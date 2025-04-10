@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 2rem;
+  }
+  
+  .content {
+    text-align: center;
+    max-width: 600px;
+  }
+  
+  .title {
+    font-size: 8rem;
+    font-weight: 700;
+    color: #2a333d;
+    margin: 0;
+    line-height: 1;
+  }
+  
+  .subtitle {
+    font-size: 2rem;
+    color: #2a333d;
+    margin-top: 0;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+  }
+  
+  .homeButton {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .homeButton:hover {
+    background-color: #0056b3;
+  }

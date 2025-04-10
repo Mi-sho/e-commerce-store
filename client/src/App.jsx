@@ -24,6 +24,7 @@ import UserProvider from './providers/UserProvider'
 import GuestGuard from './components/guards/GuestGuard';
 import AuthGuard from './components/guards/AuthGuard';
 import AdminGuard from './components/guards/AdminGuard';
+import NotFound from './components/not-found/NotFound';
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
      <Route path='/catalog' element={<Catalog />} />
      <Route path='/catalog/:itemId/details' element={<ItemDetails />} />
      <Route path='/blog/:articleId/details' element={<ArticleDetails />} />
-
+     <Route path="*" element={<NotFound />} />
       <Route element={<GuestGuard />}>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register/>} />
