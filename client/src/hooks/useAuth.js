@@ -1,10 +1,11 @@
-import { useUserContext } from "../context/userContext";
+import { useUserContext } from "../context/UserContext";
 
 export default function useAuth() {
-    const {accessToken} = useUserContext();
+    const {accessToken, role} = useUserContext();
 
     const isAuthenticated = accessToken !== undefined;
+    const isAdmin = role === 'admin'
 
 
-    return {isAuthenticated};
+    return {isAuthenticated, isAdmin};
 }

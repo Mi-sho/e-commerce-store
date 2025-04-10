@@ -22,6 +22,9 @@ import ProfileOrderHistory from './components/profile-order-history/ProfileOrder
 import Favorite from './components/profile-favorites/Favorite'
 import Logout from './components/logout/Logout'
 import UserProvider from './providers/UserProvider'
+import GuestGuard from './components/guards/GuestGuard';
+import AuthGuard from './components/guards/AuthGuard';
+import AdminGuard from './components/guards/AdminGuard';
 
 function App() {
   return (
@@ -31,26 +34,32 @@ function App() {
       <Navigation/>
      <Routes>
      <Route path='/' element={<Home />}/>
-     <Route path='/login' element={<Login />} />
-     <Route path='/register' element={<Register/>} />
      <Route path='/about-us' element={<About />} />
-     <Route path='contact-us' element={<ContactUs />} />
      <Route path='/blog' element={<Blog />} />
      <Route path='/catalog' element={<Catalog />} />
      <Route path='/catalog/:itemId/details' element={<ItemDetails />} />
      <Route path='/blog/:articleId/details' element={<ArticleDetails />} />
 
+      <Route element={<GuestGuard />}>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register/>} />
+     </Route>
      
-     <Route path='/myprofile/cart' element={<Cart />}/>
-     <Route path='/myprofile/checkout' element={<Checkout />}/>
-     <Route path='/myprofile/orderhistory' element={<ProfileOrderHistory />} />
-     <Route path='/myprofile/favorites' element={<Favorite />} />
-     <Route path='/logout' element={<Logout />} />
-
-     <Route path='/admin/create' element={<CreateEditItem tittle='Create' />}/>
-     <Route path='/admin/:itemId/edit' element={<CreateEditItem tittle='Edit' />}/>
-     <Route path='/admin/write-article' element={<WriteEditArticle tittle='Write' />}/>
-     <Route path='/admin/:articleId/edit-article' element={<WriteEditArticle tittle='Edit' />}/>
+     <Route element={<AuthGuard />}>
+          <Route path='contact-us' element={<ContactUs />} />
+          <Route path='/myprofile/cart' element={<Cart />}/>
+          <Route path='/myprofile/checkout' element={<Checkout />}/>
+          <Route path='/myprofile/orderhistory' element={<ProfileOrderHistory />} />
+          {/* <Route path='/myprofile/favorites' element={<Favorite />} /> */}
+          <Route path='/logout' element={<Logout />} />
+     </Route>
+     
+      <Route element={<AdminGuard />}>
+          <Route path='/admin/create' element={<CreateEditItem tittle='Create' />}/>
+          <Route path='/admin/:itemId/edit' element={<CreateEditItem tittle='Edit' />}/>
+          <Route path='/admin/write-article' element={<WriteEditArticle tittle='Write' />}/>
+          <Route path='/admin/:articleId/edit-article' element={<WriteEditArticle tittle='Edit' />}/>
+      </Route>
 
      </Routes>
 
