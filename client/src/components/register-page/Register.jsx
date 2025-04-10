@@ -19,7 +19,7 @@ export default function Register() {
    
     if(password !== rePass) {
       alert('Password missmatch');
-      return;
+      return {username, email}
     }
   
     
@@ -27,6 +27,7 @@ export default function Register() {
     try{
 
       const userData = await register(username, email, password);
+      userData.password = ''
       
       userLoginHandler(userData);
       
@@ -34,6 +35,7 @@ export default function Register() {
       navigate('/');
     } catch(err){
       alert(err.message);
+      return {username, email}
     }
 
     
@@ -54,12 +56,12 @@ export default function Register() {
           Username
           <i className="fa-solid fa-user" />
         </label>
-        <input type="text" id="username" name="username"required />
+        <input type="text" id="username" name="username" defaultValue={formState.username} required />
         <label htmlFor="email">
           Email
           <i className="fa-solid fa-envelope" />
         </label>
-        <input type="email" id="email" name="email" required />
+        <input type="email" id="email" name="email" defaultValue={formState.email} required />
         <label htmlFor="password">
           Password
           <i className="fa-solid fa-key" />

@@ -26,6 +26,7 @@ export default function Login(){
       navigate('/');
     }catch(err){
       alert(err.message);
+      return{ email }
     }
 
   };
@@ -51,7 +52,7 @@ export default function Login(){
             Email
             <i className="fa-solid fa-user" />
           </label>
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" name="email" defaultValue={formState.email}  required />
         </div>
         <div className={styles["input-group"]}>
           <label htmlFor="password">

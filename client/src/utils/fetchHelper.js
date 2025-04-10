@@ -24,7 +24,10 @@ const request = async (method, url, data, options = {} ) => {
         const response = await fetch(url, requestConfig);
         
         if(!response.ok) { 
-            const error = new Error(`Request failed: ${response.status}`);
+            const msg = await response.json();
+            console.log(`error: ${msg}`);
+            
+            const error = new Error(`Request failed: ${msg.message}`);
             error.status = response.status;
             throw error;
  
