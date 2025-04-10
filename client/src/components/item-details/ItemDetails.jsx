@@ -76,7 +76,7 @@ export default function ItemDetails() {
                 : isLogged 
                     ? <div className={styles["buttons-v1"]}>
                     <button onClick={() => addToCartClickHandler(itemId)}>Add to Cart</button>
-                    <button>Add to Wishlist</button>
+                    
                         </div>
                   : ''
                 }

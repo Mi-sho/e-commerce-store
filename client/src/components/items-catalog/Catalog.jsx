@@ -119,12 +119,11 @@ import { useUserContext } from '../../context/UserContext';
             </div>
             <div className={styles['details-buy-btns']}>
                 <Link to={`/catalog/${item._id}/details`} className={styles["item-details-tag"]}>Details</Link>
-                <button className={styles['fav-item']} ><i className={false ? "fa-solid fa-heart" :"fa-regular fa-heart"}></i></button>
                {username && <button onClick={() => addToCartClickHandler(item._id)} className={styles["item-buy-btn"]}>Buy</button>}
             </div>
         </div>)
         : <div className={styles["cat-heading"]}>
-            <h2 className={styles["no-items"]}>NO ITEMS LISTED YES FOR THE MOMENT</h2>
+            <h2 className={styles["no-items"]}>NO ITEMS LISTED FOR THE MOMENT</h2>
             </div>
         }
           
