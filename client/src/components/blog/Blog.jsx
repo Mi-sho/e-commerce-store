@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { useAllArticles, useGetArticlesPerPage } from "../../api/blogApi";
-import useSortAndFilter from "../../hooks/useSortandFilter"
+import useSortAndFilter from "../../hooks/useSortAndFilter"
 import styles from "./Blog.module.css"
 import { usePagination } from "../../hooks/usePagination";
 

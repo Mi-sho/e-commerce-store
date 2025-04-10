@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { useGetAllItems, useGetItemsPerPage } from '../../api/itemApi';
 
 import styles from './Catalog.module.css';
-import useSortAndFilter from '../../hooks/useSortandFilter';
+import useSortAndFilter from '../../hooks/useSortAndFilter';
 import { usePagination } from '../../hooks/usePagination';
 import { addItemToCart } from '../../api/cartApi';
 import { useUserContext } from '../../context/UserContext';
