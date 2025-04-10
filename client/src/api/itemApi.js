@@ -136,8 +136,15 @@ export const useGetItemsPerPage = async (offset = 0,pageSize = 5) => {
 }
 
 export const useGetNewestItems = async (offset = 0,pageSize = 20) => {
+
+    const searchParams = new URLSearchParams({
+        sortBy: '_createdOn desc',
+        pageSize,
+        offset,
+        select: '_id,item-image,tittle,itemPrice'
+    })
     try{
-        const data = await fetchHelper.get(`${baseUrl}?offset=${offset}&pageSize=${pageSize}`)
+        const data = await fetchHelper.get(`${baseUrl}?${searchParams.toString()}`)
        return data;
     }catch(err) {
         console.error(`Pagination fetch error: ${err.message}`);

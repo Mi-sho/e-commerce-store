@@ -57,7 +57,7 @@ export default function LatestItems() {
         {currItems.map((item, index) => ( 
        
   <div key={index} className="sm:w-1/2 md:w-1/3 lg:w-1/4 m-2 max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col">
-    <Link to="#">
+    <Link to={`/catalog/${item._id}/details`}>
       <img
         className="h-48 w-96 object-cover rounded-t-lg"
         src={item["item-image"]}
@@ -65,7 +65,7 @@ export default function LatestItems() {
       />
     </Link>
     <div className="px-5 pb-5 flex flex-col flex-grow">
-      <Link to="#">
+      <Link to={`/catalog/${item._id}/details`}>
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{item.tittle}</h5>
       </Link>
 
