@@ -124,3 +124,20 @@ export const useGetArticlesPerPage = async (offset = 0,pageSize = 5) => {
         return [];
     }
 }
+
+
+export const useGetNewestArticles = async () => {
+
+    const searchParams = new URLSearchParams({
+        sortBy: '_createdOn desc',
+        pageSize: 3,
+        select: '_id,article-image,tittle,article-date,article-description'
+    })
+    try{
+        const data = await fetchHelper.get(`${baseUrl}?${searchParams.toString()}`)
+       return data;
+    }catch(err) {
+        console.error(`Pagination fetch error: ${err.message}`);
+        return [];
+    }
+}

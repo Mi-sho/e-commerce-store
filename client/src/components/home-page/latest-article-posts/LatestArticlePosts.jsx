@@ -1,7 +1,25 @@
 import { Link } from 'react-router'
 import styles from './LatestArticlePosts.module.css'
+import { useEffect, useState } from 'react'
+import { useGetNewestArticles } from '../../../api/blogApi';
 
 export default function LatestArticlePosts() {
+  const [articles, setArticles ] = useState([]);
+
+  useEffect(() => {
+
+    const getArticles = async () =>{
+      
+      try{
+       const articlesFromFetch = await useGetNewestArticles();
+       setArticles(articlesFromFetch)
+      }catch(err) {
+        return alert(err.message);
+      }
+    }
+    getArticles();
+  }, [])
+ 
     return(
         <>
         <div className={styles["blog-cards-wrapper"]}>
@@ -10,33 +28,17 @@ export default function LatestArticlePosts() {
         <Link to="/blog" className={styles["view-all-articles"]}>View all articles</Link>
         </div>
         <div className={styles["blog-cards"]}>
-            <div className={styles["blog-card"]}>
-              <img src="/tempPics/IMG_20241112_131110.jpg" alt="" className={styles["blog-image"]}/>  
+          {articles.map((article) => 
+            <div key={article._id} className={styles["blog-card"]}>
+              <img src={article['article-image']} alt="" className={styles["blog-image"]}/>  
               <div className={styles["blog-content"]}>
-                <h2 className={styles["blog-title"]}>Da IMa neshto</h2>
-                <p className={styles["blog-date"]}>12.12.1222</p>
-                <p className={styles["blog-description"]}>lorem</p>
-                <Link to="/blog/1/details" className={styles["read-more"]}>Read full article</Link>
+                <h2 className={styles["blog-title"]}>{article.tittle}</h2>
+                <p className={styles["blog-date"]}>{article['article-date']}</p>
+                <p className={styles["blog-description"]}>{article['article-description']}</p>
+                <Link to={`blog/${article._id}/details`} className={styles["read-more"]}>Read full article</Link>
               </div>
             </div>
-            <div className={styles["blog-card"]}>
-              <img src="/tempPics/pexels-duynod-31306500.jpg" alt="" className={styles["blog-image"]}/>  
-              <div className={styles["blog-content"]}>
-                <h2 className={styles["blog-title"]}>Da IMa neshto</h2>
-                <p className={styles["blog-date"]}>12.12.1222</p>
-                <p className={styles["blog-description"]}>loremr12rh812rhhwgfoaihfoawhfoiqwhfoqhwfoqhwfoqhwfoiiqhfq2222222</p>
-                <Link to="" className={styles["read-more"]}>Read full article</Link>
-              </div>
-            </div>
-            <div className={styles["blog-card"]}>
-              <img src="/tempPics/gabriella-clare-marino-O5JtGuNCI6k-unsplash.jpg" alt="" className={styles["blog-image"]}/>  
-              <div className={styles["blog-content"]}>
-                <h2 className={styles["blog-title"]}>Da IMa neshtoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h2>
-                <p className={styles["blog-date"]}>12.12.1222</p>
-                <p className={styles["blog-description"]}>lorem</p>
-                <Link to="" className={styles["read-more"]}>Read full article</Link>
-              </div>
-            </div>
+            )}
         </div>
         </div>
 
