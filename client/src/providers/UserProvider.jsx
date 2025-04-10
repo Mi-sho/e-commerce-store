@@ -1,4 +1,5 @@
 
+import { clearCartStorageOnLogout } from "../api/cartApi";
 import { UserContext } from "../context/userContext";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -17,6 +18,7 @@ export default function UserProvider({
 
     const userLogoutHandler = () => {
         setAuthData(null);
+        clearCartStorageOnLogout();
     };
 
     return(
