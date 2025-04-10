@@ -6,7 +6,7 @@ import styles from './Catalog.module.css';
 import useSortAndFilter from '../../hooks/useSortandFilter';
 import { usePagination } from '../../hooks/usePagination';
 import { addItemToCart } from '../../api/cartApi';
-import { useUserContext } from '../../context/userContext';
+import { useUserContext } from '../../context/UserContext';
 import useAuth from '../../hooks/useAuth';
 
   export default function Catalog() {

@@ -4,7 +4,7 @@ import styles from './Register.module.css'
 
 import { useRegister } from '../../api/authApi';
 import { useActionState } from 'react';
-import { useUserContext } from '../../context/userContext';
+import { useUserContext } from '../../context/UserContext';
 import { toast } from 'react-toastify';
 
 export default function Register() {

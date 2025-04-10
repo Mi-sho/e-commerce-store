@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router";
-import { useUserContext } from "../../../context/userContext";
+import { useUserContext } from "../../../context/UserContext";
 
 export default function UserProfile() {
     const [opened, setState] = useState(false);

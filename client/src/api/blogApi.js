@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useUserContext } from "../context/userContext"
+import { useUserContext } from "../context/UserContext"
 import fetchHelper from "../utils/fetchHelper";
 import { useEffect, useState } from "react";
 

@@ -1,7 +1,7 @@
 
 import fetchHelper from "../utils/fetchHelper";
 import { useEffect, useRef } from "react";
-import { useUserContext } from "../context/userContext";
+import { useUserContext } from "../context/UserContext";
 
 const baseUrl = 'http://localhost:3030/users';
 

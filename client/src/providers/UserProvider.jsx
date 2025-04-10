@@ -1,6 +1,6 @@
 
 import { clearCartStorageOnLogout } from "../api/cartApi";
-import { UserContext } from "../context/userContext";
+import { UserContext } from "../context/UserContext";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 
@@ -26,4 +26,4 @@ export default function UserProvider({
             {children}
         </UserContext.Provider>
     )
-}
+};

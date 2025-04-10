@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import AdminNav from "./admin-nav/AdminNav";
 import UserProfile from "./user-profile-nav/UserProfileNav";
-import { useUserContext } from "../../context/userContext";
+import { useUserContext } from "../../context/UserContext";
 
 
 

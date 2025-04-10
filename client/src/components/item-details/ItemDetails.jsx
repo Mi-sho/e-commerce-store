@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router'
 import { useDeleteItem, useOneItem } from '../../api/itemApi'
-import { useUserContext } from '../../context/userContext';
+import { useUserContext } from '../../context/UserContext';
 import { Link } from 'react-router';
 
 import styles from './ItemDetails.module.css';

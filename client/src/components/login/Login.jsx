@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import styles from './Login.module.css'
 import { useLogin } from '../../api/authApi';
-import { useUserContext } from '../../context/userContext';
+import { useUserContext } from '../../context/UserContext';
 
 
 export default function Login(){

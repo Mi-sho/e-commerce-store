@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router';
 import styles from './ArticleDetails.module.css';
-import { useUserContext } from '../../context/userContext';
+import { useUserContext } from '../../context/UserContext';
 import { useDeleteArticle, useOneArticle } from '../../api/blogApi';
 import { useState } from 'react';
 

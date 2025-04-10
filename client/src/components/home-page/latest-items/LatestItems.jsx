@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { useGetNewestItems } from "../../../api/itemApi";
 import { useEffect, useState } from "react";
 import { addItemToCart } from "../../../api/cartApi";
-import { useUserContext } from "../../../context/userContext";
+import { useUserContext } from "../../../context/UserContext";
 
 export default function LatestItems() {
  const [allItems, setAllItems] = useState([]);
