@@ -8,7 +8,7 @@ export default function WriteEditArticle({tittle}) {
         const { writeArticle } = useWriteArticle();
         const {editArticle} = useEditArticle();
         const {articleId} = useParams();
-        const { article } = articleId ? useOneArticle(articleId) : {article: {}}
+        const { article } = useOneArticle(articleId || null)
 
         const isEdit = tittle === "Edit";
         
@@ -47,34 +47,34 @@ export default function WriteEditArticle({tittle}) {
 
                                     <div className={styles["article-tittle"]}>
                                     <label htmlFor="tittle">Tittle</label>
-                                    <input type="text" id="tittle" name="tittle" defaultValue={article.tittle || ''} required/>
+                                    <input type="text" id="tittle" name="tittle" defaultValue={article?.tittle || ''} required/>
                                     </div>      
             
             
                                     <div className={styles["article-author"]}>
                                     <label htmlFor="article-author">Author</label>
-                                    <input type="text" id="article-author" name="article-author" defaultValue={article["article-author"] || ''} required/>
+                                    <input type="text" id="article-author" name="article-author" defaultValue={article?.["article-author"] || ''} required/>
                                     </div>
             
                                     <div className={styles["article-image"]}>
                                     <label htmlFor="article-image">Image</label>
-                                    <input type="text" id="article-image" name="article-image" defaultValue={article["article-image"] || ''}  required/>
+                                    <input type="text" id="article-image" name="article-image" defaultValue={article?.["article-image"] || ''}  required/>
                                     </div>
 
                                     <div className={styles["article-image-caption"]}>
                                     <label htmlFor="article-image-caption">Image caption</label>
-                                    <input type="text" id="article-image-caption" name="article-image-caption" defaultValue={article["article-image-caption"] || ''} required/>
+                                    <input type="text" id="article-image-caption" name="article-image-caption" defaultValue={article?.["article-image-caption"] || ''} required/>
                                     </div>
             
             
                                     <div className={styles["article-description"]}>
                                     <label htmlFor="article-description">Description</label>
-                                    <textarea type="text" id="article-description" name="article-description" defaultValue={article["article-description"] || ''} required/>
+                                    <textarea type="text" id="article-description" name="article-description" defaultValue={article?.["article-description"] || ''} required/>
                                     </div>
             
                                     <div className={styles["article-date"]}>
                                     <label htmlFor="article-date">Date</label>
-                                    <input type="text" id="article-date" name="article-date" defaultValue={article["article-date"] || ''} required/>
+                                    <input type="text" id="article-date" name="article-date" defaultValue={article?.["article-date"] || ''} required/>
                                     </div>
             
                                     <button type='submit' className={styles['write-edit-sbm-btn']}>{tittle} article</button>

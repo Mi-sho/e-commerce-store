@@ -8,7 +8,7 @@ export default function CreateEditItem({ tittle }) {
   const { createItem } = useCreateItem();
   const { editItem } = useEditItem();
   const { itemId } = useParams();
-  const { item } = itemId ? useOneItem(itemId) : { item: {} };
+  const { item } = useOneItem(itemId || null)
 
   const isEdit = tittle === "Edit";
 
@@ -59,22 +59,22 @@ export default function CreateEditItem({ tittle }) {
           >
             <div className={styles["item-tittle"]}>
               <label htmlFor="tittle">Tittle</label>
-              <input type="text" id="tittle" name="tittle" defaultValue={item.tittle || ''} required />
+              <input type="text" id="tittle" name="tittle" defaultValue={item?.tittle || ''} required />
             </div>
 
             <div className={styles["item-summary"]}>
               <label htmlFor="item-summary">Summary</label>
-              <input type="text" id="item-summary" name="item-summary" defaultValue={item["item-summary"] || ''} required />
+              <input type="text" id="item-summary" name="item-summary" defaultValue={item?.["item-summary"] || ''} required />
             </div>
 
             <div className={styles["item-image"]}>
               <label htmlFor="item-image">Image</label>
-              <input type="text" id="item-image" name="item-image" defaultValue={item["item-image"] || ''} required/>
+              <input type="text" id="item-image" name="item-image" defaultValue={item?.["item-image"] || ''} required/>
             </div>
 
             <div className={styles["item-category"]}>
               <label htmlFor="itemCategory">Category</label>
-              <select type="text" id="itemCategory" name="itemCategory" defaultChecked={item.itemCategory || ''} required>
+              <select type="text" id="itemCategory" name="itemCategory" defaultValue={item?.itemCategory || ''} required>
                 <option value="">Choose category</option>
                 <option value="Paintings">Paintings</option>
                 <option value="Furnitures">Furnitures</option>
@@ -87,12 +87,12 @@ export default function CreateEditItem({ tittle }) {
 
             <div className={styles["item-condition"]}>
               <label htmlFor="item-condition">Condition</label>
-              <input type="text" id="item-condition" name="item-condition" defaultValue={item["item-condition"] || ''} required/>
+              <input type="text" id="item-condition" name="item-condition" defaultValue={item?.["item-condition"] || ''} required/>
             </div>
 
             <div className={styles["item-maker"]}>
               <label htmlFor="item-maker">Maker</label>
-              <input type="text" id="item-maker" name="item-maker" defaultValue={item["item-maker"] || ''} required/>
+              <input type="text" id="item-maker" name="item-maker" defaultValue={item?.["item-maker"] || ''} required/>
             </div>
 
             <div className={styles["item-description"]}>
@@ -101,14 +101,14 @@ export default function CreateEditItem({ tittle }) {
                 type="text"
                 id="item-description"
                 name="item-description"
-                defaultValue={item["item-description"] || ''}
+                defaultValue={item?.["item-description"] || ''}
                 required
               />
             </div>
 
             <div className={styles["item-price"]}>
               <label htmlFor="itemPrice">Price</label>
-              <input type="number" id="itemPrice" name="itemPrice"  defaultValue={item.itemPrice || ''} required/>
+              <input type="number" id="itemPrice" name="itemPrice"  defaultValue={item?.itemPrice || ''} required/>
             </div>
 
             <button type="submit" className={styles["create-edit-sbm-btn"]}>

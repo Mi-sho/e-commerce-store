@@ -50,7 +50,11 @@ export const useGetAllItems = () => {
 export const useOneItem = (itemId) => {
     const [item, setItem] = useState({});
 
+    
+
     useEffect(() => {
+        if(!itemId) return;
+        
         fetchHelper.get(`${baseUrl}/${itemId}`)
         .then(setItem)
         .catch((err) => console.log(err.message))

@@ -53,6 +53,10 @@
 }
 
 .article-content {
+    width:100%;
+    max-width:100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     font-size: 20px;
     line-height: 1.8;
     color: #555;

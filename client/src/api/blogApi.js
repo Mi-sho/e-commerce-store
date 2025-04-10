@@ -50,6 +50,8 @@ export const useOneArticle = (articleId) => {
   const [ article , setArticle ] = useState({});
 
   useEffect(() => {
+    if(!articleId) return;
+    
   fetchHelper.get(`${baseUrl}/${articleId}`)
   .then(setArticle)
   .catch(err => alert(err.message))
