@@ -21,11 +21,13 @@ import ProfileOrderHistory from './components/profile-order-history/ProfileOrder
 import Favorite from './components/profile-favorites/Favorite'
 import Logout from './components/logout/Logout'
 import UserProvider from './providers/UserProvider'
+// import CartProvider from './providers/CartProvider'
 
 function App() {
   return (
      <>
      <UserProvider>
+      {/* <CartProvider> */}
       <Navigation/>
      <Routes>
      <Route path='/' element={<Home />}/>
@@ -36,7 +38,7 @@ function App() {
      <Route path='/blog' element={<Blog />} />
      <Route path='/catalog' element={<Catalog />} />
      <Route path='/catalog/:itemId/details' element={<ItemDetails />} />
-     <Route path='/blog/:itemId/details' element={<ArticleDetails />} />
+     <Route path='/blog/:articleId/details' element={<ArticleDetails />} />
 
      
      <Route path='/myprofile/cart' element={<Cart />}/>
@@ -48,12 +50,12 @@ function App() {
      <Route path='/admin/create' element={<CreateEditItem tittle='Create' />}/>
      <Route path='/admin/:itemId/edit' element={<CreateEditItem tittle='Edit' />}/>
      <Route path='/admin/write-article' element={<WriteEditArticle tittle='Write' />}/>
-     <Route path='/admin/:itemId/edit-article' element={<WriteEditArticle tittle='Edit' />}/>
-
+     <Route path='/admin/:articleId/edit-article' element={<WriteEditArticle tittle='Edit' />}/>
 
      </Routes>
 
     <Footer /> 
+    {/* </CartProvider> */}
     </UserProvider>
     </>
 

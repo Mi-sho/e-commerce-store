@@ -1,7 +1,8 @@
 import { Link } from "react-router";
-import { useAllArticles } from "../../api/blogApi";
+import { useAllArticles, useGetArticlesPerPage } from "../../api/blogApi";
 import useSortAndFilter from "../../hooks/useSortandFilter"
 import styles from "./Blog.module.css"
+import { usePagination } from "../../hooks/usePagination";
 
 const baseUrl = 'http://localhost:3030/data/articles'
 
@@ -15,6 +16,15 @@ export default function Blog() {
         data} = useSortAndFilter(baseUrl);
    
 
+
+    const {
+        currPage,
+        setCurrPage,
+    } = usePagination(useGetArticlesPerPage, 5)
+
+    const filteredPaginatedData = data.slice((currPage -1) * 5, currPage * 5)
+
+    const isMoreData = currPage * 5 < data.length;
     return(
     
         <> 
@@ -48,8 +58,8 @@ export default function Blog() {
                 <div className={styles["content-table"]}>
                     
                        
-                        {data.length > 0
-                         ? data.map(article => <div key={article._id} className={styles["blog-article-card"]}>
+                        {filteredPaginatedData.length > 0
+                         ? filteredPaginatedData.map(article => <div key={article._id} className={styles["blog-article-card"]}>
                             <Link to={`/blog/${article._id}/details`}>
                                 <img src={article["article-image"]} alt={article.tittle} className={styles["blog-article-image"]}/>  
                             </Link>
@@ -66,6 +76,23 @@ export default function Blog() {
                         }
                        
                 </div>
+                {filteredPaginatedData.length > 0 
+         ?<div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }} >
+          <button
+            onClick={() => setCurrPage((page) => Math.max(page - 1, 1))}
+            disabled={currPage === 1}
+            >
+            Prev
+          </button>
+          <span>Page {currPage}</span>
+          <button
+            onClick={() => setCurrPage((page) => page + 1)}
+            disabled={!isMoreData}
+            >
+            Next
+          </button>
+        </div>
+        :  null}
             </div>
         </>
     )

@@ -1,9 +1,10 @@
 
 import { Link } from 'react-router';
-import { useGetAllItems } from '../../api/itemApi';
+import { useGetAllItems, useGetItemsPerPage } from '../../api/itemApi';
 
 import styles from './Catalog.module.css';
 import useSortAndFilter from '../../hooks/useSortandFilter';
+import { usePagination } from '../../hooks/usePagination';
 
   export default function Catalog() {
 
@@ -18,9 +19,17 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
         searchInputHandler,
         fireSearch,
         loading,
-         data} = useSortAndFilter();
+         data: filteredData
+        } = useSortAndFilter();
 
+        const {
+            data,
+            currPage,
+            setCurrPage
+        } = usePagination(useGetItemsPerPage, 5);
 
+        
+        const filteredPaginatedData = filteredData.slice((currPage - 1) * 5, currPage * 5)
 
     return (
       <>
@@ -88,8 +97,8 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
         
         
       <div className={styles["catalog-container"]}>
-        {data.length > 0
-        ? data.map(item => <div key={item._id} className={styles["catalog-card-item"]}>
+        {filteredPaginatedData.length > 0
+        ? filteredPaginatedData.map(item => <div key={item._id} className={styles["catalog-card-item"]}>
             <div className={styles["item-image-wrapper"]}>
                 <img src={item["item-image"]} alt={item.tittle} className={styles['catalog-item-image']}/>
                 
@@ -109,72 +118,26 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
             <h2 className={styles["no-items"]}>NO ITEMS LISTED YES FOR THE MOMENT</h2>
             </div>
         }
-        {/* <div className={styles["catalog-card-item"]}>
-            <div className={styles["item-image-wrapper"]}>
-                <img src="/tempPics/rio-lecatompessy-cJWJgTrFgQA-unsplash.jpg" alt="" className={styles['catalog-item-image']}/>
-                
-            </div>
-            <div className={styles["title-description-wrapper"]}>
-                <h3 className={styles["item-title"]}>CHasovniksssssssssssssssssssssssssssssssssss</h3>
-                <p className={styles["item-description"]}>BAchkaq qko vurti strelkataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <p className={styles['item-price']}>$344</p>
-            </div>
-            <div className={styles['details-buy-btns']}>
-                <a href="/catalog/itemId/details" className={styles["item-details-tag"]}>Details</a>
-                <button className={styles['fav-item']}><i className={true ? "fa-solid fa-heart" :"fa-regular fa-heart"}></i></button>
-                <button className={styles["item-buy-btn"]}>Buy</button>
-            </div>
-        </div>
-        <div className={styles["catalog-card-item"]}>
-            <div className={styles["item-image-wrapper"]}>
-                <img src="/tempPics/birmingham-museums-trust-HEEvYhNzpEo-unsplash.jpg" alt="" className={styles['catalog-item-image']}/>
-                
-            </div>
-            <div className={styles["title-description-wrapper"]}>
-                <h3 className={styles["item-title"]}>CHasovniksssssssssssssssssssssssssssssssssss</h3>
-                <p className={styles["item-description"]}>BAchkaq qko vurti strelkataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <p className={styles['item-price']}>$344</p>
-            </div>
-            <div className={styles['details-buy-btns']}>
-                <a href="/catalog/itemId/details" className={styles["item-details-tag"]}>Details</a>
-                <button className={styles['fav-item']}><i className="fa-regular fa-heart"></i></button>
-                <button className={styles["item-buy-btn"]}>Buy</button>
-            </div>
-        </div>
-        <div className={styles["catalog-card-item"]}>
-            <div className={styles["item-image-wrapper"]}>
-                <img src="/tempPics/birmingham-museums-trust-e0wBK0xJXYQ-unsplash.jpg" alt="" className={styles['catalog-item-image']}/>
-                
-            </div>
-            <div className={styles["title-description-wrapper"]}>
-                <h3 className={styles["item-title"]}>CHasovniksssssssssssssssssssssssssssssssssss</h3>
-                <p className={styles["item-description"]}>BAchkaq qko vurti strelkataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <p className={styles['item-price']}>$344</p>
-            </div>
-            <div className={styles['details-buy-btns']}>
-                <a href="/catalog/itemId/details" className={styles["item-details-tag"]}>Details</a>
-                <button className={styles['fav-item']}><i className="fa-regular fa-heart"></i></button>
-                <button className={styles["item-buy-btn"]}>Buy</button>
-            </div>
-        </div>
-        <div className={styles["catalog-card-item"]}>
-            <div className={styles["item-image-wrapper"]}>
-                <img src="/tempPics/gabriella-clare-marino-O5JtGuNCI6k-unsplash.jpg" alt="" className={styles['catalog-item-image']}/>
-                
-            </div>
-            <div className={styles["title-description-wrapper"]}>
-                <h3 className={styles["item-title"]}>CHasovniksssssssssssssssssssssssssssssssssss</h3>
-                <p className={styles["item-description"]}>BAchkaq qko vurti strelkataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <p className={styles['item-price']}>$344</p>
-            </div>
-            <div className={styles['details-buy-btns']}>
-                <a href="/catalog/itemId/details" className={styles["item-details-tag"]}>Details</a>
-                <button className={styles['fav-item']}><i className="fa-regular fa-heart"></i></button>
-                <button className={styles["item-buy-btn"]}>Buy</button>
-            </div>
-        </div> */}
-      
+          
+              
       </div>
+          {filteredPaginatedData.length > 0 
+         ?<div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }} >
+          <button
+            onClick={() => setCurrPage((page) => Math.max(page - 1, 1))}
+            disabled={currPage === 1}
+            >
+            Prev
+          </button>
+          <span>Page {currPage}</span>
+          <button
+            onClick={() => setCurrPage((page) => page + 1)}
+            disabled={filteredPaginatedData.length < 5}
+            >
+            Next
+          </button>
+        </div>
+        :  null}
       </div>
       </>
     )

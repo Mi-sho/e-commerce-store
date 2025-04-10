@@ -114,3 +114,13 @@ export const useDeleteArticle = () => {
         }
 
 };
+
+export const useGetArticlesPerPage = async (offset = 0,pageSize = 5) => {
+    try{
+        const data = await fetchHelper.get(`${baseUrl}?offset=${offset}&pageSize=${pageSize}`)
+       return data;
+    }catch(err) {
+        console.error(`Pagination fetch error: ${err.message}`);
+        return [];
+    }
+}
