@@ -19,7 +19,6 @@ import WriteEditArticle from './components/admin/write-edit-article/WriteEditArt
 import ItemDetails from './components/item-details/ItemDetails'
 import ArticleDetails from './components/article-details/ArticleDetails'
 import ProfileOrderHistory from './components/profile-order-history/ProfileOrderHistory'
-import Favorite from './components/profile-favorites/Favorite'
 import Logout from './components/logout/Logout'
 import UserProvider from './providers/UserProvider'
 import GuestGuard from './components/guards/GuestGuard';
@@ -50,7 +49,7 @@ function App() {
           <Route path='/myprofile/cart' element={<Cart />}/>
           <Route path='/myprofile/checkout' element={<Checkout />}/>
           <Route path='/myprofile/orderhistory' element={<ProfileOrderHistory />} />
-          {/* <Route path='/myprofile/favorites' element={<Favorite />} /> */}
+        
           <Route path='/logout' element={<Logout />} />
      </Route>
      
