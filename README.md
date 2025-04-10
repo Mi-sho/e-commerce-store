@@ -48,7 +48,7 @@ The project is divided into two main parts:
    npm run dev
    ```
 
-4. In a separate terminal, start the mockup server
+4. In a separate terminal, start the SoftUni practice server
    ```
    cd ../server
    node server.js
