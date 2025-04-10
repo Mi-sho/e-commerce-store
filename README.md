@@ -60,7 +60,7 @@ The project is divided into two main parts:
 - `npm run dev` - Start development server
 
 ### Server
-- `node server.js` - Start the mockup server
+- `node server.js` - Start the practice server
 
 ## Project Structure
 
