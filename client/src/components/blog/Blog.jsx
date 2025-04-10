@@ -7,7 +7,12 @@ const baseUrl = 'http://localhost:3030/data/articles'
 
 export default function Blog() {
 
-    const {sortOption, sortOptionChoiceHandler, data} = useSortAndFilter(baseUrl);
+    const {sortOption, 
+        sortOptionChoiceHandler, 
+        inputSearch,
+        searchInputHandler,
+        fireSearch, 
+        data} = useSortAndFilter(baseUrl);
    
 
     return(
@@ -17,8 +22,16 @@ export default function Blog() {
                 <h2 className={styles["blog-heading-title"]}>Dive deep into the art world with our blog section!</h2>
                 <div className={styles["container-search-sort"]}>
                     <span>
-                    <input type="text" className={styles["search-blog-bar"]} placeholder="Search..." name="search-blog"/>
-                    <button className="search-blogs-btn">Search</button>
+                    <input 
+                        type="text" 
+                        className={styles["search-blog-bar"]} 
+                        placeholder="Search..." 
+                        name="search-blog"
+                        value={inputSearch}
+                        onChange={searchInputHandler}
+                    />
+                        
+                    <button className="search-blogs-btn" onClick={fireSearch}>Search</button>
                     </span>
                     <select 
                         name="sortBlogsBy" 
