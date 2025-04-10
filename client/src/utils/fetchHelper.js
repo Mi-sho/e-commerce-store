@@ -24,12 +24,10 @@ const request = async (method, url, data, options = {} ) => {
         const response = await fetch(url, requestConfig);
         
         if(!response.ok) { 
-            const msg = await response.json();
-            console.log(`error: ${msg}`);
             
-            const error = new Error(`Request failed: ${msg.message}`);
-            error.status = response.status;
-            throw error;
+            
+            const result = await response.json()
+            throw result;
  
         }
         if(response.status == 204){
@@ -41,9 +39,7 @@ const request = async (method, url, data, options = {} ) => {
         
 
     } catch(err) {
-        if(!err.status) {
-            err.message = 'Network error: ' + err.message;
-        }
+       
         throw err;
     };
 

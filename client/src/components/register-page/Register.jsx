@@ -5,6 +5,7 @@ import styles from './Register.module.css'
 import { useRegister } from '../../api/authApi';
 import { useActionState } from 'react';
 import { useUserContext } from '../../context/userContext';
+import { toast } from 'react-toastify';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export default function Register() {
 
    
     if(password !== rePass) {
-      alert('Password missmatch');
+      toast.error('Password missmatch.');
       return {username, email}
     }
   
@@ -31,10 +32,10 @@ export default function Register() {
       
       userLoginHandler(userData);
       
-
+      toast.success('"Registration successful! Welcome aboard 🎉"')
       navigate('/');
     } catch(err){
-      alert(err.message);
+      toast.error(err.message);
       return {username, email}
     }
 

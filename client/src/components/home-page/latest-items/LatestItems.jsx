@@ -49,9 +49,7 @@ export default function LatestItems() {
  const currItems = allItems.slice(iOfFirstItem,iOfLastItem);
 
   const addToCartClickHandler = (itemId) => {
-    
-         const response = addItemToCart(itemId);
-         alert(response.message)
+        addItemToCart(itemId);
      };
 
   

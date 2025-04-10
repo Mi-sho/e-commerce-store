@@ -7,9 +7,11 @@ import useSortAndFilter from '../../hooks/useSortandFilter';
 import { usePagination } from '../../hooks/usePagination';
 import { addItemToCart } from '../../api/cartApi';
 import { useUserContext } from '../../context/userContext';
+import useAuth from '../../hooks/useAuth';
 
   export default function Catalog() {
-    const {username} = useUserContext();
+    const { username} = useUserContext();
+    
     
     const { sortOption,
         sortOptionChoiceHandler,
@@ -35,8 +37,7 @@ import { useUserContext } from '../../context/userContext';
 
 
          const addToCartClickHandler = (itemId) => {
-                const response = addItemToCart(itemId);
-                alert(response.message)
+                 addItemToCart(itemId);
             };
 
     return (

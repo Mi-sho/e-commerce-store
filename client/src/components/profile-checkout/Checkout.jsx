@@ -3,6 +3,7 @@ import styles from "./Checkout.module.css";
 import { useActionState } from "react";
 import { usePlaceOrder } from "../../api/orderApi";
 import { clearCartStorageOnLogout } from "../../api/cartApi";
+import { toast } from "react-toastify";
 
 export default function Checkout() {
   const location = useLocation();
@@ -24,12 +25,12 @@ export default function Checkout() {
       try{
 
         const response = await orderItem(orderData);
-        alert("Order was made!");
+        toast.success("Order was made!");
         clearCartStorageOnLogout();
         navigate('/myprofile/orderhistory')
         
       } catch(err){
-        return alert(err.message)
+        toast.error(err.message)
       }
 
     }

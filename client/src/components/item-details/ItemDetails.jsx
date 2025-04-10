@@ -45,8 +45,8 @@ export default function ItemDetails() {
 
 
     const addToCartClickHandler = (itemId) => {
-        const response = addItemToCart(itemId);
-        alert(response.message)
+         addItemToCart(itemId);
+       
     };
 
 

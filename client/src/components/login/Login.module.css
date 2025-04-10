@@ -85,20 +85,19 @@ h2.login-title{
 }
 
 button.login-submit{
-    background: #007bff;
-    color: white;
+    background:rgb(180, 143, 90);
     padding: 0.5em 3em;
     border: none;
     border-radius: 2em;
     font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: transform 0.3s ease;
     width: 100%;
     margin-top: 0.5em;
 }
 
 button.login-submit:hover{
-    background: #0056b3;
+    transform:scale(1.05);
 }
 
 .register-link {
@@ -109,13 +108,14 @@ button.login-submit:hover{
 }
 
 .register-link a {
-    color: #007bff;
+    font-weight:550;
+    color:black;
     text-decoration: none;
-    transition: color 0.3s ease;
+    
 }
 
 .register-link a:hover {
-    color: #0056b3;
+    
     text-decoration: underline;
 }
 

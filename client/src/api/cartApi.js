@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { useUserContext } from "../context/userContext";
 
 const CART_KEY = 'cart';
@@ -16,14 +17,14 @@ export const addItemToCart = (itemId) => {
     const alreadyInCart = cart.some(id => id === itemId);
 
     if(alreadyInCart) {
-        return {message: 'Item is already in your cart!'}
+        return toast.error('Item is already in your cart!')
     };
 
     const cartUpdate = [...cart, itemId];
 
     localStorage.setItem(CART_KEY, JSON.stringify(cartUpdate));
 
-    return {message: 'Item added to your cart! :)'}
+    return toast.success('Item added to your cart! :)')
 
     
 };

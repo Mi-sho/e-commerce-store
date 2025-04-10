@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router'
-
+import { ToastContainer } from 'react-toastify'
 import './App.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 import Navigation from './components/navigation/Navigation'
 import Home from './components/home-page/Home'
@@ -21,13 +22,12 @@ import ProfileOrderHistory from './components/profile-order-history/ProfileOrder
 import Favorite from './components/profile-favorites/Favorite'
 import Logout from './components/logout/Logout'
 import UserProvider from './providers/UserProvider'
-// import CartProvider from './providers/CartProvider'
 
 function App() {
   return (
      <>
      <UserProvider>
-      {/* <CartProvider> */}
+      
       <Navigation/>
      <Routes>
      <Route path='/' element={<Home />}/>
@@ -55,8 +55,9 @@ function App() {
      </Routes>
 
     <Footer /> 
-    {/* </CartProvider> */}
+    
     </UserProvider>
+    <ToastContainer position="top-right" autoClose={3000} />
     </>
 
   )

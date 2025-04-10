@@ -98,13 +98,13 @@ button.register-btn{
     padding: 0.5em 3em ;
     border-radius: 2em;
     margin-bottom: 1em;
-    background: white;
-    transition: background, color 0.3s ease;
+    background: rgb(180, 143, 90);
+    transition: transform  0.3s ease;
     cursor: pointer;
 }
 button.register-btn:hover{
-    background: brown;
-    color: white;
+    transform: scale(1.05);
+
    
 }
 

@@ -3,6 +3,7 @@ import styles from "./Cart.module.css";
 import { useEffect, useState } from "react";
 import { getUserCart, removeItemFromCart } from "../../api/cartApi";
 import fetchHelper from "../../utils/fetchHelper";
+import { toast } from "react-toastify";
 
 
 export default function Cart() {
@@ -63,6 +64,7 @@ export default function Cart() {
 
         const restPrice = restItems.reduce((acc, item) => acc + item.itemPrice, 0);
         setTotalPrice(restPrice);
+        toast.success('Item removed from your cart!')
      
         
       

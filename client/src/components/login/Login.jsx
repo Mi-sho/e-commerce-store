@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router'
 import { useActionState } from 'react';
+import { toast } from 'react-toastify';
 
 import styles from './Login.module.css'
 import { useLogin } from '../../api/authApi';
@@ -19,13 +20,10 @@ export default function Login(){
     try{
       const userData = await login(email, password);
       userLoginHandler(userData);
-
-     
-  
-
       navigate('/');
+      toast.success('Login successful! Enjoy!')
     }catch(err){
-      alert(err.message);
+      toast.error(err.message)
       return{ email }
     }
 
