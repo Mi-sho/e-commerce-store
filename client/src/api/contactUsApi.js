@@ -6,7 +6,7 @@ const baseUrl = 'http://localhost:3030/data/contacts';
 
 export const useContact = () => {
 
-    const {role, accessToken} = useUserContext();
+    const {accessToken} = useUserContext();
 
     const sendUs =  (emailData) => {
         const options = {

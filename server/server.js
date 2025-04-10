@@ -1519,7 +1519,39 @@
     	likes: {
     	},
     	articles: {
-    		
+    		"53123bf5-7f41-47ba-b485-43eccb91cb95":{
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "tittle": "The Gramophone",
+                "article-author": "Richard",
+                "article-image": "https://images.unsplash.com/photo-1518893883800-45cd0954574b?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "article-image-caption": "Old one",
+                "article-description": "During the early 1880s a contest developed between Thomas A. Edison  and the Volta Laboratory team of Chichester A. Bell and Charles Sumner Tainter . The objective was to transform Edison's 1877 tinfoil phonograph, or talking machine, into an instrument capable of taking its place alongside the typewriter as a business correspondence device. This involved not only  building  a better machine, but finding a substance to replace the foil as the recording medium. By the beginning of 1887 both sides had announced the  invention of a machine  using a wax cylinder that would be incised vertically to match the sound vibrations. The same machine that was used to make the recording would, as with the tinfoil machine, be used for playback. Edison, as he did earlier, termed his wax cylinder apparatus a phonograph; Bell and Tainter named their apparatus a graphophone. Business people preferred the former, but neither machine was much of a success. Since the phonograph did not succeed as a dictating device, Edison's company began to market pre-recorded wax cylinders of popular music that could be played on the phonograph in the office or home or even on coin-in-slot machines in arcades, saloons, and elsewhere. By the early 1890s a rudimentary recording industry was underway. Meanwhile, Bell and Tainter made considerable improvements to their graphophone, and they, too, entered the entertainment field. Both sides had applied for a patent on the vertical cutting, or incising, of sound vibrations into a wax cylinder. Both sides made recordings with the result that a phonograph cylinder could be played on the graphophone and vice-versa.",
+                "article-date": "12.05.2023",
+                "_createdOn": 1744319588838,
+                "_id": "9e921ae1-3ae9-4dbf-9172-a0c6bd14cb96"
+            },
+            "51123bf5-7s41-47ba-b485-43eccb91cb95":{
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "tittle": "The Gramophone",
+                "article-author": "Richard",
+                "article-image": "https://images.unsplash.com/photo-1518893883800-45cd0954574b?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "article-image-caption": "Old one",
+                "article-description": "During the early 1880s a contest developed between Thomas A. Edison  and the Volta Laboratory team of Chichester A. Bell and Charles Sumner Tainter . The objective was to transform Edison's 1877 tinfoil phonograph, or talking machine, into an instrument capable of taking its place alongside the typewriter as a business correspondence device. This involved not only  building  a better machine, but finding a substance to replace the foil as the recording medium. By the beginning of 1887 both sides had announced the  invention of a machine  using a wax cylinder that would be incised vertically to match the sound vibrations. The same machine that was used to make the recording would, as with the tinfoil machine, be used for playback. Edison, as he did earlier, termed his wax cylinder apparatus a phonograph; Bell and Tainter named their apparatus a graphophone. Business people preferred the former, but neither machine was much of a success. Since the phonograph did not succeed as a dictating device, Edison's company began to market pre-recorded wax cylinders of popular music that could be played on the phonograph in the office or home or even on coin-in-slot machines in arcades, saloons, and elsewhere. By the early 1890s a rudimentary recording industry was underway. Meanwhile, Bell and Tainter made considerable improvements to their graphophone, and they, too, entered the entertainment field. Both sides had applied for a patent on the vertical cutting, or incising, of sound vibrations into a wax cylinder. Both sides made recordings with the result that a phonograph cylinder could be played on the graphophone and vice-versa.",
+                "article-date": "12.05.2023",
+                "_createdOn": 1744319588838,
+                "_id": "9e921ae1-3ae9-4dbf-9172-a0c6bd14cb96"
+            },
+            "53123bf5-7f41-47ba-b485-43ecqwe1cb95":{
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "tittle": "The Gramophone",
+                "article-author": "Richard",
+                "article-image": "https://images.unsplash.com/photo-1518893883800-45cd0954574b?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "article-image-caption": "Old one",
+                "article-description": "During the early 1880s a contest developed between Thomas A. Edison  and the Volta Laboratory team of Chichester A. Bell and Charles Sumner Tainter . The objective was to transform Edison's 1877 tinfoil phonograph, or talking machine, into an instrument capable of taking its place alongside the typewriter as a business correspondence device. This involved not only  building  a better machine, but finding a substance to replace the foil as the recording medium. By the beginning of 1887 both sides had announced the  invention of a machine  using a wax cylinder that would be incised vertically to match the sound vibrations. The same machine that was used to make the recording would, as with the tinfoil machine, be used for playback. Edison, as he did earlier, termed his wax cylinder apparatus a phonograph; Bell and Tainter named their apparatus a graphophone. Business people preferred the former, but neither machine was much of a success. Since the phonograph did not succeed as a dictating device, Edison's company began to market pre-recorded wax cylinders of popular music that could be played on the phonograph in the office or home or even on coin-in-slot machines in arcades, saloons, and elsewhere. By the early 1890s a rudimentary recording industry was underway. Meanwhile, Bell and Tainter made considerable improvements to their graphophone, and they, too, entered the entertainment field. Both sides had applied for a patent on the vertical cutting, or incising, of sound vibrations into a wax cylinder. Both sides made recordings with the result that a phonograph cylinder could be played on the graphophone and vice-versa.",
+                "article-date": "12.05.2023",
+                "_createdOn": 1744319588838,
+                "_id": "9e921ae1-3ae9-4dbf-9172-a0c6bd14cb96"
+            },
     	},
     	catalog: {
     		"53d4dbf5-7f41-47ba-b485-43eccb91cb95": {
