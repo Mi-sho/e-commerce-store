@@ -11,7 +11,7 @@ export default function Cart() {
     const [totalPrice, setTotalPrice] = useState(0);
 
     const CheckOutClickHandler = () => {
-        navigate('/myprofile/checkout')
+        navigate('/myprofile/checkout', {state: {cartItems, totalPrice}})
     }
     
     useEffect(() => {
@@ -109,7 +109,7 @@ export default function Cart() {
 :        <div className={styles["checkout-wrapper"]}>
         
         <p className={styles["total-price"]}>Total price: <strong>${totalPrice}</strong></p>
-        <button className={styles["pay-btn"]} onClick={CheckOutClickHandler} >Check out</button>
+        <button className={styles["pay-btn"]} onClick={() => CheckOutClickHandler()} >Check out</button>
       </div>
 
 }

@@ -1,6 +1,41 @@
+import { useLocation, useNavigate } from "react-router";
 import styles from "./Checkout.module.css";
+import { useActionState } from "react";
+import { usePlaceOrder } from "../../api/orderApi";
+import { clearCartStorageOnLogout } from "../../api/cartApi";
 
 export default function Checkout() {
+  const location = useLocation();
+  const navigate = useNavigate();
+    const { cartItems, totalPrice } = location.state || {};
+    const { orderItem } = usePlaceOrder();
+    
+
+    const checkoutSubmitHandler = async(prevState, formData) => {
+
+      const userInfoData = Object.fromEntries(formData);
+
+      const orderData ={
+        userInfoData,
+        cartItems,
+        totalPrice
+      };
+
+      try{
+
+        const response = await orderItem(orderData);
+        alert("Order was made!");
+        clearCartStorageOnLogout();
+        navigate('/myprofile/orderhistory')
+        
+      } catch(err){
+        return alert(err.message)
+      }
+
+    }
+
+
+    const [formState, chechoutAction, isPending] = useActionState(checkoutSubmitHandler)
   return (
     <>
       <div className={styles["checkout-wrapper"]}>
@@ -11,7 +46,7 @@ export default function Checkout() {
         <div className={styles["center-wrapper"]}>
           <div className={styles["checkout-form-wrapper"]}>
             <h2 className={styles["checkout-form-heading"]}>Payment details</h2>
-            <form action="POST" className={styles["payment-form"]}>
+            <form action={chechoutAction} className={styles["payment-form"]}>
               <div className={styles["first-last-name"]}>
                 <div className={styles["first-name-checkout"]}>
                   <label htmlFor="firstname">First Name</label>
@@ -66,18 +101,16 @@ export default function Checkout() {
               <p className={styles["summary-price-h"]}>Price</p>
             </div>
             <div className={styles["summary-items"]}>
-              <div className={styles["summary-item"]}>
-                <p className={styles["summary-item-title"]}>CHukachev</p>
-                <p className={styles["summary-item-price"]}>$12222</p>
+              {cartItems.map(item => (
+                <div key={item._id} className={styles["summary-item"]}>
+                <p className={styles["summary-item-title"]}>{item.tittle}</p>
+                <p className={styles["summary-item-price"]}>${item.itemPrice}</p>
               </div>
-              <div className={styles["summary-item"]}>
-                <p className={styles["summary-item-title"]}>CHukachev</p>
-                <p className={styles["summary-item-price"]}>$12222</p>
-              </div>
+              ))}
             </div>
             <div className={styles["summary-price"]}>
               <h4 className={styles["summary-total-price-h"]}>Total price:</h4>
-              <p className={styles["summary-total-price-num"]}>$23232</p>
+              <p className={styles["summary-total-price-num"]}>${totalPrice}</p>
             </div>
           </div>
         </div>
