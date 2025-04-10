@@ -1,59 +1,36 @@
-import { useUserContext } from "../context/userContext";
-import fetchHelper from "../utils/fetchHelper";
+
+const CART_KEY = 'cart';
+
+export const getUserCart = () => {
+    const localCart = localStorage.getItem(CART_KEY);
+    return localCart ? JSON.parse(localCart) : [];
+};
 
 
-const baseUrl = 'http://localhost:3030/data/cart';
+export const addItemToCart = (itemId) => {
 
+    const cart = getUserCart();
 
-export const useCart = () => {
-    const {accessToken, _id: userId } = useUserContext();
+    const alreadyInCart = cart.some(id => id === itemId);
 
-    const addToCart = (item) => {
-        const cartItem = {
-            itemId: item._id,
-            userId,
-            tittle: item.tittle,
-            image: item["item-image"],
-            price: item.itemPrice
-        };
-
-
-        return fetchHelper.post(baseUrl, cartItem, {
-            headers:{ 'X-Authorization': accessToken }
-        });
-
-
+    if(alreadyInCart) {
+        return {message: 'Item is already in your cart!'}
     };
 
+    const cartUpdate = [...cart, itemId];
 
-    const getUserCart = () => {
-        const userCartParams = new URLSearchParams({
-            where: `userId="${userId}"`,
-            load: `item=itemId:items`
-        });
+    localStorage.setItem(CART_KEY, JSON.stringify(cartUpdate));
 
-        return fetchHelper.get(`${baseUrl}?${userCartParams.toString()}`)
-    };
+    return {message: 'Item added to your cart! :)'}
 
-
-    const removeFromCart = (cartItemId) => {
-
-        try{
-             fetchHelper.delete(`${baseUrl}/${cartItemId}`, {
-                headers:{ 'X-Authorization': accessToken }
-            });
     
-        }catch(err){
-            throw new Error(`Failed to remove: ${err.message}`)
-        }
-    }
+};
 
+export const removeItemFromCart = (itemId) => {
+    const cartUpdate = getUserCart().filter(id => id !== itemId);
+    localStorage.setItem(CART_KEY, JSON.stringify(cartUpdate));
+};
 
-
-    return {
-        addToCart,
-        getUserCart,
-        removeFromCart,
-
-    }
+export const clearCartStorageOnLogout = () => {
+    localStorage.removeItem(CART_KEY);
 }
