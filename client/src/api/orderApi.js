@@ -53,11 +53,14 @@ export const useGetUserOrders = () =>{
 
     const getOrders = (userId) => {
         setIsLoading(true);
-
+        const params = new URLSearchParams({
+            where: `_ownerId="${userId}"`,
+            sortBy: '_createdOn desc',
+        });
 
         try{
 
-            return fetchHelper.get(`${baseUrl}?userId=${userId}&sortBy=_createdOn desc`)
+            return fetchHelper.get(`${baseUrl}?${params.toString()}`)
         } catch(err) {
             return(`Failed to load orders. Please try again later!`)
             

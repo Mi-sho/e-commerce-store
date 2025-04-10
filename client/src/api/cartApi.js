@@ -1,3 +1,4 @@
+import { useUserContext } from "../context/userContext";
 
 const CART_KEY = 'cart';
 
@@ -8,6 +9,7 @@ export const getUserCart = () => {
 
 
 export const addItemToCart = (itemId) => {
+   
 
     const cart = getUserCart();
 

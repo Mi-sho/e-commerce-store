@@ -2,10 +2,12 @@ import { Link } from "react-router";
 import { useGetNewestItems } from "../../../api/itemApi";
 import { useEffect, useState } from "react";
 import { addItemToCart } from "../../../api/cartApi";
+import { useUserContext } from "../../../context/userContext";
 
 export default function LatestItems() {
  const [allItems, setAllItems] = useState([]);
  const [currPage, setCurrPage] = useState(1);
+ const {username} = useUserContext();
  
  
  useEffect(() => {
@@ -47,6 +49,7 @@ export default function LatestItems() {
  const currItems = allItems.slice(iOfFirstItem,iOfLastItem);
 
   const addToCartClickHandler = (itemId) => {
+    
          const response = addItemToCart(itemId);
          alert(response.message)
      };
@@ -83,12 +86,15 @@ export default function LatestItems() {
         <span className="text-3xl font-bold text-gray-900 dark:text-white">
           ${item.itemPrice}
         </span>
-        <Link
+       { username &&
+
+       <Link
           onClick={() => addToCartClickHandler(item._id)}
           className="text-black bg-latest border  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-4xl text-sm px-5 py-2.5 text-center hover:scale-[1.08]"
         >
           Add to cart
         </Link>
+       } 
       </div>
     </div>
   </div> ))}

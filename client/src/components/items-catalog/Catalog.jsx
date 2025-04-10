@@ -6,9 +6,10 @@ import styles from './Catalog.module.css';
 import useSortAndFilter from '../../hooks/useSortandFilter';
 import { usePagination } from '../../hooks/usePagination';
 import { addItemToCart } from '../../api/cartApi';
+import { useUserContext } from '../../context/userContext';
 
   export default function Catalog() {
-
+    const {username} = useUserContext();
     
     const { sortOption,
         sortOptionChoiceHandler,
@@ -118,7 +119,7 @@ import { addItemToCart } from '../../api/cartApi';
             <div className={styles['details-buy-btns']}>
                 <Link to={`/catalog/${item._id}/details`} className={styles["item-details-tag"]}>Details</Link>
                 <button className={styles['fav-item']} ><i className={false ? "fa-solid fa-heart" :"fa-regular fa-heart"}></i></button>
-                <button onClick={() => addToCartClickHandler(item._id)} className={styles["item-buy-btn"]}>Buy</button>
+               {username && <button onClick={() => addToCartClickHandler(item._id)} className={styles["item-buy-btn"]}>Buy</button>}
             </div>
         </div>)
         : <div className={styles["cat-heading"]}>
