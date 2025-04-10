@@ -1,25 +1,57 @@
 import {  useNavigate } from "react-router";
 import styles from "./Cart.module.css";
 import { useEffect, useState } from "react";
-// import { useCart } from "../../api/cartApi";
+import { getUserCart } from "../../api/cartApi";
+import fetchHelper from "../../utils/fetchHelper";
+
 
 export default function Cart() {
     const navigate = useNavigate();
-    // const { getUserCart, removeFromCart } = useCart();
     const [cartItems, setCartItems] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const CheckOutClickHandler = () => {
         navigate('/myprofile/checkout')
     }
     
+    useEffect(() => {
 
-    // useEffect(() => {
-    //   getUserCart()
-    //   .then(setCartItems)
-    // }, [])
+      const loadCartItems = async () => {
+        const itemIds = getUserCart();
+       
+        
+        if(itemIds.length === 0){
+          setCartItems([]);
+          return;
+        }
+
+        try{
+          const query = encodeURIComponent(`_id IN ("${itemIds.join('","')}")`);
+          const neededData = encodeURIComponent(`_id,tittle,itemPrice,item-image`);
+
+          const response = await fetchHelper.get(`http://localhost:3030/data/items?where=${query}&select=${neededData}`)
+         
+          setCartItems(response);
+
+          
+         
+          const price = response.reduce((acc, item) => acc + item.itemPrice, 0);
+          console.log(price);
+          
+          setTotalPrice(price);
+        } catch (err) {
+          console.error(`Failed: ${err.message}`);
+          
+        }
+
+
+      };
+      loadCartItems();
+
+    }, [])
+    
     
 
-    const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0)
     
 
     const removeCartItemClickHandler = async (cartItemId) => {
@@ -57,10 +89,10 @@ export default function Cart() {
         {/* </thead> */}
 
         <tbody>
-        {cartItems.map(item =><tr key={item.itemId}>
-          <td  data-label="Image" className={styles["cart-table-img-r"]}><img src={item.image} alt={item.tittle} /></td>
+        {cartItems.map(item =><tr key={item._id}>
+          <td  data-label="Image" className={styles["cart-table-img-r"]}><img src={item['item-image']} alt={item.tittle} /></td>
           <td  data-label="Item" className={styles["cart-table-item-r"]}>{item.tittle}</td>
-          <td  data-label="Price" className={styles["cart-table-price-r"]}>${item.price}</td>
+          <td  data-label="Price" className={styles["cart-table-price-r"]}>${item.itemPrice}</td>
           <td  data-label="Action" className={styles["cart-table-btn-r"]}><button onClick={() => removeCartItemClickHandler(item._id)}>Remove</button></td>
         </tr> )}
         

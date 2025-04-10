@@ -15,11 +15,11 @@ export default function ItemDetails() {
     const {itemId} = useParams();
     const { item } = useOneItem(itemId);
     const { deleteItem } = useDeleteItem();
-    // const { addToCart } = useCart();
+    
 
 
     const [isLoading, setIsLoading] = useState (false);
-    const [isItemInCart , setIsItemInCart] = useState(false);
+    
     const isAdmin = role === 'admin';
     const isLogged = username !== undefined;
     
@@ -43,15 +43,6 @@ export default function ItemDetails() {
 
     };
 
-
-    // const addToCartClickHandler = async () => {
-    //     try{
-    //         await addToCart(item);
-    //         alert('Item has been added to cart! :)')
-    //     }catch(err) {
-    //         alert('Something went wrong: ' + err.message)
-    //     }
-    // } 
 
     const addToCartClickHandler = (itemId) => {
         const response = addItemToCart(itemId);
