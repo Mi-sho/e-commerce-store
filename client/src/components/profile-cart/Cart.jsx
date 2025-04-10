@@ -1,7 +1,7 @@
 import {  useNavigate } from "react-router";
 import styles from "./Cart.module.css";
 import { useEffect, useState } from "react";
-import { getUserCart } from "../../api/cartApi";
+import { getUserCart, removeItemFromCart } from "../../api/cartApi";
 import fetchHelper from "../../utils/fetchHelper";
 
 
@@ -54,14 +54,18 @@ export default function Cart() {
 
     
 
-    const removeCartItemClickHandler = async (cartItemId) => {
-      try{
-        await removeFromCart(cartItemId);
+    const removeCartItemClickHandler =  (cartItemId) => {
+    
+         removeItemFromCart(cartItemId);
 
-        setCartItems(prevState => prevState.filter(item => item._id !== cartItemId))
-      }catch(err) {
-        alert(`Error occured:   ${err.message}`)
-      }
+         const restItems = cartItems.filter(item => item._id !== cartItemId);
+        setCartItems(restItems);
+
+        const restPrice = restItems.reduce((acc, item) => acc + item.itemPrice, 0);
+        setTotalPrice(restPrice);
+     
+        
+      
     }
 
   return (
@@ -76,7 +80,7 @@ export default function Cart() {
 
 
     {cartItems.length <= 0 
-       ? <p>YOur cArt is Empty Ma BOI !!!</p>
+       ? <p>You dont have any items in your cart!</p>
       :<table className={styles["cart-table"]}>
         {/* <thead> */}
 
@@ -100,8 +104,9 @@ export default function Cart() {
 
       </table>
 }
-{false ? '':
-      <div className={styles["checkout-wrapper"]}>
+{cartItems.length <= 0 
+? ''
+:        <div className={styles["checkout-wrapper"]}>
         
         <p className={styles["total-price"]}>Total price: <strong>${totalPrice}</strong></p>
         <button className={styles["pay-btn"]} onClick={CheckOutClickHandler} >Check out</button>
