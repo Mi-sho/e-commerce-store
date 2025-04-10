@@ -87,7 +87,7 @@ export default function Checkout() {
               </div>
 
               <div className={styles["final-order-btn"]}>
-                <button className={styles["finalized-order"]}>Order</button>
+                <button className={styles["finalized-order"]} disabled={isPending}>Order</button>
               </div>
             </form>
           </div>

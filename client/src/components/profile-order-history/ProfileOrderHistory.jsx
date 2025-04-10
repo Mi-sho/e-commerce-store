@@ -1,57 +1,77 @@
+import { useEffect, useState } from 'react';
+import { useUserContext } from '../../context/userContext'
 import styles from './ProfileOrderHistory.module.css'
+import { useGetUserOrders } from '../../api/orderApi';
 
 export default function ProfileOrderHistory() {
+        const { _id } = useUserContext();
+        const [orders, setOrders] = useState([]);
+        const {getOrders, isLoading} = useGetUserOrders();
+
+        useEffect(() => {
+                const loadOrders = async () => {
+                    try{
+
+                        const recievedOrders = await getOrders(_id);
+                        setOrders(recievedOrders);
+                    }catch (err){
+                       return alert('There was an issue fetching your orders. Please try again.')
+                    }
+                }
+            
+            loadOrders();
+        }, [_id])
+
+     
+        
     return(
+    
         <>
         <div className={styles["cart-container"]}>
 
                         <h2 className={styles['cart-heading']}>My order history</h2>
 
-                        {/* {true ? <h2>Nqmash nishto tuka </h2>
-                        : Array.map(item => <OrderedItem item:item />)} */}
-                       
-                       <div className={styles["ordered-item-wrapper"]}>
+                       {orders.length === 0 
+                       ? (<p>No orders made.</p>)
+                       :(
+                        orders.map(order => (
+                        <div key={order._id}className={styles["ordered-item-wrapper"]}>
                         <div className={styles["ordered-item-head-wrapper"]}>
                             <div className={styles["order-placed"]}>
                                 <p className={styles["order-placed-tittle"]}>Order placed</p>
-                                <p className={styles["order-placed-date"]}>April 5,2025</p>
+                                <p className={styles["order-placed-date"]}>
+                                    {new Date(order._createdOn).toLocaleDateString()}
+                                </p>
                             </div>
                             <div className={styles["order-placed"]}>
                                 <p className={styles["order-total-price-tittle"]}>Total price</p>
-                                <p className={styles["order-total-price-num"]}>$255</p>
+                                <p className={styles["order-total-price-num"]}>${order.totalPrice}</p>
                             </div>
                             <div className={styles["order-placed"]}>
                                 <p className={styles["order-locaton-tittle"]}>Ship to</p>
-                                <p className={styles["order-locaton"]}>Munich,Germany</p>
+                                <p className={styles["order-locaton"]}>{order.userInfoData.city}, {order.userInfoData.country}</p>
                             </div>
 
-                            <p className={styles["order-id"]}>Order # 12518752112</p>
+                            <p className={styles["order-id"]}>Order # {order._id}</p>
                         </div>
                         <hr className={styles['order-hr']} />
+                        
+                        {order.cartItems.map(item => (
 
-                        <div className={styles["ordered-item-body-wrapper"]}>
+                        <div key={item._id} className={styles["ordered-item-body-wrapper"]}>
                             <div className={styles["ordered-item-img"]}>
-                                <img src="/tempPics/IMG_20241112_131110.jpg" alt="" />
+                                <img src={item['item-image']} alt={item.tittle} />
                             </div>
-                        <div className={styles['ordered-item-tittle']}>CHasovkin bratlence</div>
+                        <div className={styles['ordered-item-tittle']}>{item.tittle}</div>
                         </div>
-                        <hr className={styles['item-hr']}/>
+                    ))}
+                    
+                    </div>
 
-                        <div className={styles["ordered-item-body-wrapper"]}>
-                            <div className={styles["ordered-item-img"]}>
-                                <img src="/tempPics/mcgill-library-y4PqRPqSako-unsplash.jpg" alt="" />
-                            </div>
-                        <div className={styles['ordered-item-tittle']}>CHasovkin bratlence</div>
-                        </div> 
-                        <hr className={styles['item-hr']}/>
 
-                        <div className={styles["ordered-item-body-wrapper"]}>
-                            <div className={styles["ordered-item-img"]}>
-                                <img src="/tempPics/birmingham-museums-trust-sJr8LDyEf7k-unsplash.jpg" alt="" />
-                            </div>
-                        <div className={styles['ordered-item-tittle']}>CHasovkin bratlence</div>
-                        </div>
-                       </div>
+                    )))
+                    }
+                       
         </div>
         </>
     )
