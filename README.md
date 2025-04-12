@@ -68,7 +68,7 @@ password: 123456
 - `npm run dev` - Start development server
 
 ### Server
-- `node server.js` - Start the practice server
+- `node server.js` - Start the mockup server
 
 ## Project Structure
 
