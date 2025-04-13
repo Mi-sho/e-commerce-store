@@ -54,14 +54,6 @@ The project is divided into two main parts:
    node server.js
    ```
 
-### For admin panel and features you can use:
-username: admin@abv.bg
-password: admin
-
-### For normal user 
-username: peter@abv.bg
-password: 123456
-
 ## Development Commands
 
 ### Client
